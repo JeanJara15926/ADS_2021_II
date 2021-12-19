@@ -59,7 +59,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">                    
-                    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Alianza_Lima.svg/1200px-Alianza_Lima.svg.png">
+                    <link rel="icon" href="https://i.pinimg.com/736x/76/db/60/76db608c4cb10408d7438e59ae7d76ed.jpg">
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
                     <!-- BOOTSTRAP -->
                     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
