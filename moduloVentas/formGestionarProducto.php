@@ -41,18 +41,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="stock">
                             </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="categoria" class="col-sm-2 col-form-label">Categoria</label>
-                            <div class="col-sm-10">
-                                <select class="form-select form-select-sm" id="categoria" aria-label=".form-select-sm example">
-                                    <option value="Gaseosas">GASEOSAS</option>
-                                    <option value="Cervezas">CERVEZAS</option>
-                                    <option value="Agua Mineral">AGUAS MINERALES</option>
-                                    <option value="Otros">OTROS</option>
-                                </select>
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="mb-3 row">
                             <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
                             <div class="col-sm-10">

@@ -21,7 +21,7 @@ function validarCampos($producto,$precio,$stock){
         $producto = $_POST['NProducto'];
         $precio = $_POST['PrecioU'];
         $stock = $_POST['StockP'];
-        $categoria = $_POST['CategoriaP'];
+        
         //$imagen = $_POST['ImagenP'];
         $resultado_validar_campos_productos = ValidarCampos($producto, $precio, $stock);
         if($resultado_validar_campos_productos == 0){
@@ -37,11 +37,11 @@ function validarCampos($producto,$precio,$stock){
                 if($valiImagen==0){
                     echo "El formato de la imagen no es valido";
                 }else{
-                    $objController->insertarProducto($producto,$precio, $stock,$imagen,$categoria); 
+                    $objController->insertarProducto($producto,$precio, $stock,$imagen); 
                 }
             }else{
                 $imagen=null;
-                $objController->insertarProducto($producto,$precio, $stock,$imagen,$categoria); 
+                $objController->insertarProducto($producto,$precio, $stock,$imagen); 
             }
         }  
     }
@@ -71,8 +71,8 @@ function validarCampos($producto,$precio,$stock){
         $idEditarChambicito = $_POST['idmoficarChambi'];
         $producto = $_POST['ProductoEdi'];
         $precio = $_POST['PrecioEdi'];
-        $stock = $_POST['StockEdi'];
-        $categoria = $_POST['CategoriaEdi'];
+        $stock = $_POST['StockEdi'];      
+        
         //$imagen = $_POST['ImagenEdi'];
         $resultado_validar_camposChambi = ValidarCampos($producto, $precio, $stock);
         if($resultado_validar_camposChambi == 0){
@@ -87,12 +87,13 @@ function validarCampos($producto,$precio,$stock){
                 if($valiImagen==0){
                     echo "El formato de la imagen no es valido";
                 }else{
-                    $objController->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen,$categoria); 
+                    $objController->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen); 
                 }
                 
             }else{
                 $imagen=null;
-                $objController->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen,$categoria); 
+                $objController->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen); 
+                
             }
         }
     }

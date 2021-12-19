@@ -1,10 +1,10 @@
 <?php
 class controllerGestionarProducto{
 
-    public function insertarProducto($producto,$precio, $stock,$imagen,$categoria){
+    public function insertarProducto($producto,$precio, $stock,$imagen){
         include_once("../model/producto.php");
         $objProducto = new Producto;
-        $retorno=$objProducto->insertarProducto($producto,$precio, $stock,$imagen,$categoria);
+        $retorno=$objProducto->insertarProducto($producto,$precio, $stock,$imagen);
         if($retorno=0){
             echo "Error al insertar producto";
         }else{
@@ -38,8 +38,8 @@ class controllerGestionarProducto{
                         'producto' => $Producto[0]['producto'],
                         'stock' => $Producto[0]['stock'], 
                         'precioU' => $Producto[0]['precioU'],
-                        'imagen' => $Producto[0]['imagen'],
-                        'categoria' => $Producto[0]['categoria']
+                        'imagen' => $Producto[0]['imagen']
+                        
                     );
         echo json_encode($arr);
     }
@@ -66,14 +66,14 @@ class controllerGestionarProducto{
         }
         echo json_encode($arr);
     }
-    public function modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen,$categoria){
-        include_once("../model/producto.php");
+    public function modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen){
+        include_once("../model/producto.php");               
         $objProducto = new Producto;
-        $objProducto->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen,$categoria);
+        $objProducto->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen);
         if($retorno=0){
             echo "Error al actualizar producto";
         }else{
-            echo "1";
+            echo "1";            
         }
     }
 

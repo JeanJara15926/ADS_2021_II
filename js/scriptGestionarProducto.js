@@ -12,7 +12,7 @@ function editarProducto(ideditar) {
         $('#pUnitario').val(ProductoEncontrado.precioU);
         $('#stock').val(ProductoEncontrado.stock);
         //$('#imagen').val(ProductoEncontrado.imagen);
-        document.getElementById("categoria").value = ProductoEncontrado.categoria;
+        //document.getElementById("categoria").value = ProductoEncontrado.categoria;
     });
 }
 function modificaproducto() {
@@ -20,16 +20,15 @@ function modificaproducto() {
     var idmoficarChambi = $('#idmoficarChambi').val();
     var ProductoEdi = $('#nProducto').val();
     var PrecioEdi = $('#pUnitario').val();
-    var StockEdi = $('#stock').val();
-    var CategoriaEdi = $('#categoria').val();
+    var StockEdi = $('#stock').val();    
     var ImagenEdi = $('#imagen')[0].files[0];
 
     formData.append('idmoficarChambi',idmoficarChambi);
     formData.append('ProductoEdi',ProductoEdi);
     formData.append('PrecioEdi',PrecioEdi);
-    formData.append('StockEdi',StockEdi);
-    formData.append('CategoriaEdi',CategoriaEdi);
+    formData.append('StockEdi',StockEdi);    
     formData.append('ImagenEdi',ImagenEdi);
+    
 
 
     $.ajax({
@@ -110,14 +109,12 @@ function guardaproducto() {
     var formData = new FormData();
     var NProducto = $('#nProducto').val();
     var PrecioU = $('#pUnitario').val();
-    var StockP = $('#stock').val();
-    var CategoriaP = $('#categoria').val();
+    var StockP = $('#stock').val();    
     var ImagenP = $('#imagen')[0].files[0];
 
     formData.append('NProducto',NProducto);
     formData.append('PrecioU',PrecioU);
-    formData.append('StockP',StockP);
-    formData.append('CategoriaP',CategoriaP);
+    formData.append('StockP',StockP);    
     formData.append('ImagenP',ImagenP);
 
     $.ajax({
@@ -159,7 +156,7 @@ function ExtraerProductos() {
     var extraerProductos = 1;
     $.post("../moduloVentas/getProducto.php", { extraerProductos: extraerProductos }, function (data) {
         var ListaProductos = JSON.parse(data);
-        var resultado = "";
+        var resultado = "";        
         for (var i = 0; i < ListaProductos.length; i++) {
             resultado+="<tr><td>"+ListaProductos[i].producto+"</td><td>"+ListaProductos[i].precioU+"</td><td>"+ListaProductos[i].stock+"<td><button class='btn btn-warning' onclick='editarProducto("+ListaProductos[i].id+")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarProducto("+ListaProductos[i].id+")'><i class='far fa-trash-alt'></i></button></td></tr>";
         }

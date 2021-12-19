@@ -24,18 +24,20 @@ include_once("conexion.php");
             }            
             return ($productoE);
         }
-        public function modificarProducto($idEditarChambicito,$producto,$precio,$stock,$imagen,$categoria){
-            $conn=$this->conectar();
-            $retorno=0;
+        public function modificarProducto($idEditarChambicito,$producto,$precio,$stock,$imagen){
+            
+            $conn=$this->conectar();     
+                
+            $retorno=0;            
             if($imagen==null){
-                $SQL ="UPDATE producto SET producto='$producto',precioU=$precio,stock=$stock,categoria='$categoria' 
+                $SQL ="UPDATE producto SET producto='$producto',precioU=$precio,stock=$stock  
                 WHERE id=$idEditarChambicito";
                 $result = mysqli_query($conn,$SQL);
                 $retorno = 1;
             }else{
                 if (move_uploaded_file($imagen["tmp_name"], "../imagenes/".$imagen['name'])) {
                     $nom_imagen=$imagen['name'];
-                    $SQL ="UPDATE producto SET producto='$producto',precioU=$precio,stock=$stock,imagen='$nom_imagen',categoria='$categoria' 
+                    $SQL ="UPDATE producto SET producto='$producto',precioU=$precio,stock=$stock,imagen='$nom_imagen' 
                     WHERE id=$idEditarChambicito";
                     $result = mysqli_query($conn,$SQL);
                     $retorno = 1;
@@ -93,20 +95,20 @@ include_once("conexion.php");
             $this->desconectar($conn);
             return $res;
         }
-        public function insertarProducto($producto,$precio, $stock,$imagen,$categoria){
+        public function insertarProducto($producto,$precio, $stock,$imagen){
 
             $conn=$this->conectar();
             $retorno=0;
             if($imagen==null){
-                $SQLP ="INSERT INTO producto(producto, precioU, stock, imagen, categoria) 
-                VALUES ('$producto',$precio, $stock,'img_default.jpg','$categoria')";
+                $SQLP ="INSERT INTO producto(producto, precioU, stock, imagen) 
+                VALUES ('$producto',$precio, $stock,'img_default.jpg')";
                 $result = mysqli_query($conn,$SQLP);
                 $retorno = 1;
             }else{
                 if (move_uploaded_file($imagen["tmp_name"], "../imagenes/".$imagen['name'])) {
                     $nom_imagen=$imagen['name'];
-                    $SQLP ="INSERT INTO producto(producto, precioU, stock, imagen, categoria) 
-                    VALUES ('$producto',$precio, $stock,'$nom_imagen','$categoria')";
+                    $SQLP ="INSERT INTO producto(producto, precioU, stock, imagen) 
+                    VALUES ('$producto',$precio, $stock,'$nom_imagen')";
                     $result = mysqli_query($conn,$SQLP);
                     $retorno = 1;
                 } else {
