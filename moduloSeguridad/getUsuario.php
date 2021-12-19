@@ -12,6 +12,19 @@ if(isset($_POST['btnEnviar'])){
         $objController = new controllerAutenticarUsuario;
         $objController -> ValidarUsuario($login,$password);
     }
+}else if(isset($_POST['retrocede'])){
+    session_start();
+    include_once("../model/usuarioPrivilegio.php");
+    include_once("controllerAutenticarUsuario.php");
+    $objController = new controllerAutenticarUsuario;
+    $idUsuario= $objController -> ObtenerIDUsuario($_SESSION['login']);
+
+    $objPrivilegio = new usuarioPrivilegio;
+    $listaPrivilegios = $objPrivilegio -> obtenerPrivilegiosUsuario($idUsuario);
+    $_SESSION['login'] = $_POST['login'];
+    include_once("formMenuPrincipal.php");
+    $objMenuPrincipal = new formMenuPrincipal;
+    $objMenuPrincipal -> formMenuPrincipalShow($listaPrivilegios);
 }
 function ComprobarCampo($login){
     if(strlen($login)>3  ){

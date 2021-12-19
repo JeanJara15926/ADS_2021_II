@@ -7,7 +7,7 @@
 header{
     margin: 100px auto;
     width: 1450px;
-    height: 280px;    
+    height: 290px;    
 }
 
 div.contenedor{
@@ -15,11 +15,13 @@ div.contenedor{
     top: 15px;   
     left: 15px;    
     width: 200px;
-    height: 240px;
+    height: 270px;
     float: left;
     transition: height 0.4s;
-    transition: top 0.4s;
+    transition: top 0.4s;        
 }
+
+
 
 div#uno{
     background-color: rgb(208, 101, 3);
@@ -52,7 +54,7 @@ img.icon{
 
 }
 
-p.texto{
+p.texto{    
     font-size: 1.2rem;
     color: white;
     text-align: center;
@@ -69,3 +71,5 @@ div.contenedor:hover{
 div.contenedor:hover p.texto{
     opacity: 1;
 }
+
+

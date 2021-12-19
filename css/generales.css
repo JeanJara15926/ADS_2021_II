@@ -1,10 +1,23 @@
 html, body {
     margin: 0;
     padding: 0;
+    
 }
+
+.fondo{
+    background: linear-gradient(360deg, #FFDC99 0%, rgba(255, 234, 194, 0.598958) 53.13%, rgba(255, 255, 255, 0) 100%);    
+}
+
+.barra{
+    background:#000;
+    height: 40px;
+    font-size: 30px;    
+    text-align: center;   
+}
+
 .ADSLogin{
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;  
 }
 .ADSleft{
     float: left;
@@ -124,64 +137,13 @@ html, body {
 footer{
     background: #111;
     height: auto;
-    width: auto;
-    padding-top: 40px;
-    margin-top: 400px;
+    width: auto;    
+    padding-top: auto;
+    margin-top: 287px;
     color: #fff;
 }
-.LPfooter-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-.LPfooter-content h3{
-    font-size: 1.8rem;
-    font-weight: 400;
-    text-transform: capitalize;
-    line-height: 3rem;
-}
-.LPfooter-content p{
-    max-width: 500px;
-    max-height: 10px auto;
-    font-size: 14px;
-}
-.LPsocials{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.LPsocials li{
-    margin: 0 10px;
-}
-.LPsocials a{
-    text-decoration: none;
-    color: #fff;
-}
-.LPsocials a i{
-    font-size:  1.1rem;
-    transition: color .4s ease;
-}
-.LPsocials a:hover i{
-    color: #70CAEE;
-}
-.LPfooter-bottom{
-    background: #000;
-    padding: 20px 0;
-    text-align: center;
-}
-.LPfooter-bottom p{
-    font-size: 14px;
-    word-spacing: 2px;
-    text-transform: capitalize;
-}
-.LPfooter-bottom span{
-    text-transform: uppercase;
-    opacity: .4;
-    font-weight: 200;
-}
+
+
 .quitar{
     background-color: red;
     color: seashell;
