@@ -1,6 +1,6 @@
 <?php
 class controllerGestionarProducto{
-
+// jaraaaaaaaaaaa
     public function insertarProducto($producto,$precio, $stock,$imagen){
         include_once("../model/producto.php");
         $objProducto = new Producto;
