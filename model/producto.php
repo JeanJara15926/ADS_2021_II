@@ -24,21 +24,21 @@ include_once("conexion.php");
             }            
             return ($productoEditar);
         }
-        public function modificarProducto($idEditarChambicito,$producto,$precio,$stock,$imagen){
+        public function modificarProducto($idEditarP,$producto,$precio,$stock,$imagen){
             
             $conn=$this->conectar();     
                 
             $retorno=0;            
             if($imagen==null){
                 $SQL ="UPDATE producto SET producto='$producto',precioU=$precio,stock=$stock  
-                WHERE id=$idEditarChambicito";
+                WHERE id=$idEditarP";
                 $result = mysqli_query($conn,$SQL);
                 $retorno = 1;
             }else{
                 if (move_uploaded_file($imagen["tmp_name"], "../imagenes/".$imagen['name'])) {
                     $nom_imagen=$imagen['name'];
                     $SQL ="UPDATE producto SET producto='$producto',precioU=$precio,stock=$stock,imagen='$nom_imagen' 
-                    WHERE id=$idEditarChambicito";
+                    WHERE id=$idEditarP";
                     $result = mysqli_query($conn,$SQL);
                     $retorno = 1;
                 } else {

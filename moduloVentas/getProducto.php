@@ -67,7 +67,7 @@ function validarCampos($producto,$precio,$stock){
         $objController->BuscarProductoEditar($_POST['ideditar']);
     }
     else if(isset($_POST['idmoficar'])){
-        $idEditarChambicito = $_POST['idmoficar'];
+        $idEditarP = $_POST['idmoficar'];
         $producto = $_POST['ProductoEdi'];
         $precio = $_POST['PrecioEdi'];
         $stock = $_POST['StockEdi'];     
@@ -85,12 +85,12 @@ function validarCampos($producto,$precio,$stock){
                 if($valiImagen==0){
                     echo "El formato de la imagen no es valido";
                 }else{
-                    $objController->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen); 
+                    $objController->modificarProducto($idEditarP,$producto,$precio, $stock,$imagen); 
                 }
                 
             }else{
                 $imagen=null;
-                $objController->modificarProducto($idEditarChambicito,$producto,$precio, $stock,$imagen); 
+                $objController->modificarProducto($idEditarP,$producto,$precio, $stock,$imagen); 
                 
             }
         }
