@@ -44,7 +44,7 @@
                 <hr>   
                 <table class="ADSLogin">
                     <tr>
-                        <td><img src="../img/banner2.jpg" alt="" width="1000" height="160"></td>
+                        <td><img src="../img/banner2.jpg" alt="" width="1000" height="200"></td>
                     </tr>
                 </table>
                 <hr>   

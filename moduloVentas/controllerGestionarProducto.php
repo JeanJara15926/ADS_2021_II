@@ -29,10 +29,10 @@ class controllerGestionarProducto{
         echo json_encode($arr);
     
     }
-    public function BuscarProductoChambi($ideditar){
+    public function BuscarProductoEditar($ideditar){
         include_once("../model/producto.php");
         $objProductoq = new producto;
-        $Producto = $objProductoq->BuscarProductoChambi($ideditar);
+        $Producto = $objProductoq->BuscarProductoEditar($ideditar);
         $arr =  array(
                         'id' => $Producto[0]['id'],
                         'producto' => $Producto[0]['producto'],
@@ -49,10 +49,10 @@ class controllerGestionarProducto{
         $objProductoq = new producto;
         $objProductoq->EliminarProducto($id);
     }
-    public function BuscarProducto($id){
+    public function BuscarProducto($nombre){
         include_once("../model/producto.php");
         $objProductoq = new producto;
-        $ListaProductos = $objProductoq->BuscarProductoNombre($id);
+        $ListaProductos = $objProductoq->BuscarProductoNombre($nombre);
         $filas=count($ListaProductos);
         $arr=array();
         for($i=0;$i<$filas;$i++){

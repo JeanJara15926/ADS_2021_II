@@ -11,12 +11,12 @@ class formMenuPrincipal extends formulario
     
     <table class="ADSLogin">   
              
-        <?php for ($i = 1; $i < $numero_privilegios; $i++) { ?>          
+        <?php for ($i = 0; $i < $numero_privilegios; $i++) { ?>          
             
               <td width="54" rowspan="2" valign="middle">
                 <div class="contenedor" id="dos">
                     <p class="texto"><?php echo $listaPrivilegios[$i]['label'] ?></p>
-                    <img class="icon" src="../img/icono1-1.png">                    
+                    <img class="icon" src="../img/<?php echo $listaPrivilegios[$i]['image']?>">                    
                     <form id="form1" name="form1" method="post" action="<?php echo $listaPrivilegios[$i]['path'] ?>" >
                       <input type="hidden" name="login" value="<?php echo $_SESSION['login'] ?>"  />                      
                       <button type="submit" name="bntOk" id="bntOk" class="btn btn-outline-warning" > <?php echo $listaPrivilegios[$i]['label'] ?> </button>

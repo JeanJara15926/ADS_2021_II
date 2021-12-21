@@ -1,29 +1,29 @@
 ExtraerProductos();
 $('.btnOculto').hide();
 var ListaProductos = new Array();
+
 function editarProducto(ideditar) {
     $('.btnmostrar').hide();
     $('.btnOculto').show();
-    $('#idmoficarChambi').val("");
+    $('#idmoficar').val("");
     $.post("../moduloVentas/getProducto.php", { ideditar: ideditar }, function (data) {
         var ProductoEncontrado = JSON.parse(data);
-        $('#idmoficarChambi').val(ProductoEncontrado.id);
+        $('#idmoficar').val(ProductoEncontrado.id);
         $('#nProducto').val(ProductoEncontrado.producto);
         $('#pUnitario').val(ProductoEncontrado.precioU);
-        $('#stock').val(ProductoEncontrado.stock);
-        //$('#imagen').val(ProductoEncontrado.imagen);
-        //document.getElementById("categoria").value = ProductoEncontrado.categoria;
+        $('#stock').val(ProductoEncontrado.stock);        
     });
 }
+
 function modificaproducto() {
     var formData = new FormData();
-    var idmoficarChambi = $('#idmoficarChambi').val();
+    var idmoficar = $('#idmoficar').val();
     var ProductoEdi = $('#nProducto').val();
     var PrecioEdi = $('#pUnitario').val();
     var StockEdi = $('#stock').val();    
     var ImagenEdi = $('#imagen')[0].files[0];
 
-    formData.append('idmoficarChambi',idmoficarChambi);
+    formData.append('idmoficar',idmoficar);
     formData.append('ProductoEdi',ProductoEdi);
     formData.append('PrecioEdi',PrecioEdi);
     formData.append('StockEdi',StockEdi);    
@@ -57,7 +57,7 @@ function modificaproducto() {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                $('#idmoficarChambi').val("");
+                $('#idmoficar').val("");
                 $('#nProducto').val("");
                 $('#pUnitario').val("");
                 $('#stock').val("");
@@ -69,7 +69,7 @@ function modificaproducto() {
         }
     });
 }
-function eliminarProducto(idpro) {
+function eliminarProducto(id) {
     Swal.fire({
         title: '¿Estas seguro de Eliminar Producto?',
         text: "¡Recuerda que esto ya no se podrá revertir!",
@@ -85,7 +85,7 @@ function eliminarProducto(idpro) {
                 'El Producto ha sido Eliminado.',
                 'success'
             )
-            $.post("../moduloVentas/getProducto.php", { idpro: idpro }, function (data) {
+            $.post("../moduloVentas/getProducto.php", { id: id }, function (data) {
                 ExtraerProductos();
             });
         }
@@ -93,7 +93,7 @@ function eliminarProducto(idpro) {
 
 }
 
-function Buscarpro() {
+function Buscarproducto() {
     var BProducto = $('#BProducto').val();
     $.post("../moduloVentas/getProducto.php", { BProducto: BProducto }, function (data) {
         var ListaProductos = JSON.parse(data);

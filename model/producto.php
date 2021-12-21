@@ -13,16 +13,16 @@ include_once("conexion.php");
             }            
             return ($producto);
         }
-        public function BuscarProductoChambi($ideditar){
+        public function BuscarProductoEditar($ideditar){
             $conn=$this->conectar();
             $SQLP ="SELECT * FROM producto WHERE id = $ideditar";
             $resulti = mysqli_query($conn,$SQLP);
             $this->desconectar($conn);
             $numero_filas = mysqli_num_rows($resulti); 
             for($i=0;$i < $numero_filas;$i++){
-                $productoE[$i] =mysqli_fetch_array($resulti);
+                $productoEditar[$i] =mysqli_fetch_array($resulti);
             }            
-            return ($productoE);
+            return ($productoEditar);
         }
         public function modificarProducto($idEditarChambicito,$producto,$precio,$stock,$imagen){
             

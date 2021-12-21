@@ -19,7 +19,7 @@
                 </tr>
             </table>
             <?php          
-            //$this->piePaginaShow();
+            $this->piePaginaShow();
         }
     }
 ?>

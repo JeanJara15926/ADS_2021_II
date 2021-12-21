@@ -44,18 +44,16 @@
                         </div>                        
                         <div class="mb-3 row">
                             <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
-                            <div class="col-sm-10">
-                                <!--<input type="text" class="form-control" id="imagen">-->
+                            <div class="col-sm-10">                                
                                 <input type="file" class="form-control" name="imagen" id="imagen">
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <div class="col-5"></div>
-                            <div class="col">
-                                <!--<button class="btn btn-primary btnmostrar" onclick="guardaproducto()">Guardar</button>-->
+                            <div class="col">                                
                                 <input type="button" class="btn btn-primary btnmostrar" value="Guardar" onclick="guardaproducto()"/>
                                 <input type="button" class="btn btn-primary btnOculto" onclick="modificaproducto()" value="Modificar" />
-                                <input type="hidden" id="idmoficarChambi">
+                                <input type="hidden" id="idmoficar">
                             </div>
                         </div>
                     </div>
@@ -72,7 +70,7 @@
                             
                         </div>
                         <div class="col">
-                            <button class="btn btn-success" onclick="Buscarpro()">Buscar</button>
+                            <button class="btn btn-success" onclick="Buscarproducto()">Buscar</button>
                         </div>
                     </div>
                     <div>

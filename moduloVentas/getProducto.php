@@ -20,12 +20,11 @@ function validarCampos($producto,$precio,$stock){
     if(isset($_POST['NProducto'])){        
         $producto = $_POST['NProducto'];
         $precio = $_POST['PrecioU'];
-        $stock = $_POST['StockP'];
+        $stock = $_POST['StockP'];        
         
-        //$imagen = $_POST['ImagenP'];
-        $resultado_validar_campos_productos = ValidarCampos($producto, $precio, $stock);
-        if($resultado_validar_campos_productos == 0){
-            echo "Hay valores NO Validos";
+        $resulValidarCampos = ValidarCampos($producto, $precio, $stock);
+        if($resulValidarCampos == 0){            
+            echo "Los datos ingresados NO son validos";
         }else {   
             include_once("controllerGestionarProducto.php");
             $objController = new controllerGestionarProducto();
@@ -50,10 +49,10 @@ function validarCampos($producto,$precio,$stock){
             $objController = new controllerGestionarProducto();
             $objController->ExtraerProductos();
     }
-    else if(isset($_POST['idpro'])){
+    else if(isset($_POST['id'])){
         include_once("controllerGestionarProducto.php");
         $objController = new controllerGestionarProducto();
-        $objController->EliminarProducto($_POST['idpro']);
+        $objController->EliminarProducto($_POST['id']);
         
     }
     else if(isset($_POST['BProducto'])){
@@ -65,18 +64,17 @@ function validarCampos($producto,$precio,$stock){
     else if(isset($_POST['ideditar'])){
         include_once("controllerGestionarProducto.php");
         $objController = new controllerGestionarProducto();
-        $objController->BuscarProductoChambi($_POST['ideditar']);
+        $objController->BuscarProductoEditar($_POST['ideditar']);
     }
-    else if(isset($_POST['idmoficarChambi'])){
-        $idEditarChambicito = $_POST['idmoficarChambi'];
+    else if(isset($_POST['idmoficar'])){
+        $idEditarChambicito = $_POST['idmoficar'];
         $producto = $_POST['ProductoEdi'];
         $precio = $_POST['PrecioEdi'];
-        $stock = $_POST['StockEdi'];      
-        
-        //$imagen = $_POST['ImagenEdi'];
-        $resultado_validar_camposChambi = ValidarCampos($producto, $precio, $stock);
-        if($resultado_validar_camposChambi == 0){
-            echo "Hay valores NO Validos en la modificacion";
+        $stock = $_POST['StockEdi'];     
+
+        $resulValidarCamposM = ValidarCampos($producto, $precio, $stock);
+        if($resulValidarCamposM == 0){
+            echo "Los datos ingresados NO son validos";
         }else {   
             include_once("controllerGestionarProducto.php");
             $objController = new controllerGestionarProducto();
