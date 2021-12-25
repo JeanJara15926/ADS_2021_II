@@ -12,8 +12,6 @@ class controllerGestionarUsuario{
         }
     }
 
-    
-
 
     //Extraer Usuario
     public function ExtraerUsuarios(){
