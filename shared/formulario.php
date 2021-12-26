@@ -48,7 +48,7 @@
                     </tr>
                 </table>
                 <hr>   
-                <br><br><br><br><br><br>
+                <br><br><br>
             <?php
         }
 

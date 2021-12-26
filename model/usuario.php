@@ -18,6 +18,13 @@
             }
         }
 
+        public function AcualizarContra($login,$npassword){ 
+            $conn=$this->conectar();
+            $SQL ="Update usuarios SET PASSWORD = '$npassword' WHERE login='$login'";
+            $result = mysqli_query($conn,$SQL);
+            $this->desconectar($conn);
+        }
+
         public function ObtenerIDUsuario($login){ 
             $conn=$this->conectar();
             $SQL ="Select idUsuario from usuarios where login='$login'";

@@ -10,7 +10,14 @@
                     <div class="col-10">
                         <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
                     </div>
-                    
+                    <div class="col">
+                        <form name="form3" method="post" action="../moduloSeguridad/getUsuario.php">                                                       
+                                <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
+                                    VOLVER<i class="fa fa-arrow-circle-left"  style="margin-left:10px"></i>
+                                </button>
+                                <input name="login" type="hidden" id="login" value="<?php echo $_SESSION['login'] ?>">					
+                        </form></p>
+                    </div>
                 </div>
             </div>
             <div class="container">

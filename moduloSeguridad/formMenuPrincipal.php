@@ -8,7 +8,7 @@ class formMenuPrincipal extends formulario
     $this->encabezadoShow("Bienvenido");
     $numero_privilegios = count($listaPrivilegios);
     ?>      
-    
+    <br><br><br>
     <table class="ADSLogin">   
              
         <?php for ($i = 0; $i < $numero_privilegios; $i++) { ?>          
