@@ -1,86 +1,152 @@
 <?php
-    include_once("..../shared/formulario.php");
+    include_once("../shared/formulario.php");
     class formGestionarUsuarios extends formulario{
         public function formGestionarUsuariosShow(){
-            $this -> encabezadoShowSimple("Gestionar Usuarios ♂♀");
-            ?>
-            
-          //  <div class="container usuarios">
-              //  <div class="row">                    
-                    //<div class="col-10">
-                      //  <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
-                    //</div>
-                    
-               // </div>
-            //</div>
+                $this -> encabezadoShowSimple("Gestionar Usuario");
+                ?>
+
+
+            <div class="container usuario">
+                <div class="row">                    
+                    <div class="col-10">
+                        <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
+                    </div>
+                    <div class="col">
+                        <form name="form3" method="post" action="../moduloSeguridad/getUsuario.php">                                                       
+                                <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
+                                    VOLVER<i class="fa fa-arrow-circle-left"  style="margin-left:10px"></i>
+                                </button>
+                                <input name="login" type="hidden" id="login" value="<?php echo $_SESSION['login'] ?>">					
+                        </form></p>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="container">
                 <form method="post" action="#" enctype="multipart/form-data">
                     <div class="">
-                        <h1 class="text-center">REGISTRO USUARIOS</h1>
+                        
+                        <h1 class="text-center">REGISTRO USUARIO ♂♀</h1>
+                        
                         <div class="mb-3 row">
-                            <label for="texto_IdUsuario" class="col-sm-2 col-form-label">ID USUARIO</label>
+                            <label for="text_IdUsuario" class="col-sm-2 col-form-label">ID USUARIO</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_IdUsuario">
+                                <input type="text" class="form-control" id="text_IdUsuario">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="texto_Nombre" class="col-sm-2 col-form-label">NOMBRE</label>
+                            <label for="text_Nombre" class="col-sm-2 col-form-label">NOMBRE</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_Nombre">
+                                <input type="text" class="form-control" id="text_Nombre">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="texto_DNI" class="col-sm-2 col-form-label">DNI</label>
+                            <label for="text_DNI" class="col-sm-2 col-form-label">DNI</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_DNI">
+                                <input type="text" class="form-control" id="text_DNI">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="texto_Rol" class="col-sm-2 col-form-label">ROL</label>
+                            <label for="text_Rol" class="col-sm-2 col-form-label">ROL</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_Rol">
+                                <input type="text" class="form-control" id="text_Rol">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="texto_Login" class="col-sm-2 col-form-label">LOGIN</label>
+                            <label for="text_Login" class="col-sm-2 col-form-label">LOGIN</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_Login">
+                                <input type="text" class="form-control" id="text_Login">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="texto_Password" class="col-sm-2 col-form-label">PASSWORD</label>
+                            <label for="text_Password" class="col-sm-2 col-form-label">PASSWORD</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_Password">
+                                <input type="text" class="form-control" id="text_Password">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="texto_Estado" class="col-sm-2 col-form-label">ESTADO</label>
+                            <label for="text_Estado" class="col-sm-2 col-form-label">ESTADO</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="texto_Estado">
+                                <input type="text" class="form-control" id="text_Estado">
                             </div>
                         </div>
+
+                        <div class="mb-3 row">
+                            <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
+                            <div class="col-sm-10">                                
+                                <input type="file" class="form-control" name="imagen" id="imagen">
+                            </div>
+                        </div>
+
+                        
+
+
 
 
                         <div class="mb-3 row">
                             <div class="col-5"></div>
                             <div class="col">                                
-                                <input type="button" class="btn btn-primary Btn_CrearUsuario" value="Guardar" onclick="CrearUsuario()"/>
-                                
+                                <input type="button" class="btn btn-primary btnmostrar" value="CREAR USUARIO" onclick="crearusuario()"/>
+                                <input type="button" class="btn btn-primary btnOculto" onclick="modificausuario()" value="Modificar" />
+                                <input type="hidden" id="idmoficar">
                             </div>
                         </div>
                     </div>
 
                 </form>
-
+                
             </div>
-            <?php
+            <div class="container">
+                <div class="">
+
+                    <h1 class="text-center">LISTA DE USUARIOS</h1>
+
+                    <div class="mb-3 row">
+                        <div class="col-11">
+                            <input type="text" class="form-control" id="BUsuario" placeholder="Ingrese el nombre del usuario">
+                            
+                        </div>
+
+                        <div class="col">
+                            <button class="btn btn-success" onclick="Buscarusuario()">Buscar</button>
+                        </div>
+                    </div>
+
+                    
+
+                    
+
+                    <div>
+                        <table class="table table-hover table-resposive text-center">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>LISTA USUARIO</th>
+                                        <th>NOMBRE</th>
+                                        <th>DNI</th>
+                                        <th>ROL</th>
+                                        <th>LOGIN</th>
+                                        <th>PASSWORD</th>
+                                        <th>ESTADO</th>
+                                        <th>MODIFICAR</th>
+                                        <th>ELIMINAR</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista_usuarios">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <script src="../js/scriptGestionarUsuario.js"></script>
+            <?php          
+                $this->piePaginaShow();
         }
     }
 ?>
