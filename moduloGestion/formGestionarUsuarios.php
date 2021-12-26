@@ -5,14 +5,14 @@
             $this -> encabezadoShowSimple("Gestionar Usuarios ♂♀");
             ?>
             
-            <div class="container usuarios">
-                <div class="row">                    
-                    <div class="col-10">
-                        <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
-                    </div>
+          //  <div class="container usuarios">
+              //  <div class="row">                    
+                    //<div class="col-10">
+                      //  <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
+                    //</div>
                     
-                </div>
-            </div>
+               // </div>
+            //</div>
 
             <div class="container">
                 <form method="post" action="#" enctype="multipart/form-data">

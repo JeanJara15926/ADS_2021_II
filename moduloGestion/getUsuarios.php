@@ -83,8 +83,9 @@ else if(isset($_POST['id_editar'])){
             $objController = new controllerGestionarUsuario();
             if(isset($_FILES['UsuarioEdi'])){
                 $nombre=$_FILES['UsuarioEdi'];
-                $valiNombre=validarNombre($nombre);
-
+               //
+                // $valiNombre=validarNombre($nombre);
+                //
               //  if($valiImagen==0){
               //      echo "El formato de la imagen no es valido";
               //  }else{
@@ -93,8 +94,9 @@ else if(isset($_POST['id_editar'])){
                 
             }else{
                 $valiNombre=null;
-                $objController->modificarUsuario($idEditarU,$nombre,$dni,$rol,$login,$password,$estado); 
-                
+                //
+                //$objController->modificarUsuario($idEditarU,$nombre,$dni,$rol,$login,$password,$estado); 
+                //
             }
         }
     }
