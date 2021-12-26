@@ -10,6 +10,6 @@
  else{
      include_once("../shared/formMensajeSistema.php");
      $objMensaje = new formMensajeSistema;
-     $objMensaje -> formMensajeSistemaShow("Acceso no permitido","<a href='../index.php'>Ir al inicio</a>");
+     $objMensaje -> formMensajeSistemaShow("Acceso denegado","<a href='../index.php'>Ir al Inicio</a>");
  }
  ?>
