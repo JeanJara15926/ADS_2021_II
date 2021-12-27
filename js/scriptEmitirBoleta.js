@@ -41,7 +41,9 @@ function BuscarProformaFecha() {
 
 function SeleccionarProforma(fila) {
     var _Proforma = ListaProformas[fila];
+    console.log( _Proforma);
     $.post("../moduloVentas/getEmitirBoleta.php", { Proforma: _Proforma }, function (data) {
+        
         if (data == "0") {
             Swal.fire({
                 title: "La proforma a caducado",
@@ -57,6 +59,7 @@ function SeleccionarProforma(fila) {
         } else {
             Proforma = _Proforma;
             Respuesta = JSON.parse(data);
+            console.log(Respuesta);
             DetalleProforma = Respuesta.DetalleProforma;
             document.getElementById("detalle_proforma").innerHTML = Respuesta.resultado;
             document.getElementById("codigo_proforma").innerHTML = "Codigo: " + Proforma.codigo;
@@ -90,14 +93,14 @@ function EmitirBoleta() {
         var id_producto = DetalleProforma[i].id;
         var cantidad = DetalleProforma[i].cantidad;
         var monto = DetalleProforma[i].monto;
-        var envases = DetalleProforma[i].envases;
-        var precioU = (monto - envases) / cantidad;
+        var bolsa = DetalleProforma[i].bolsa;
+        var precioU = (monto - bolsa) / cantidad;
 
         _DetalleBoleta[i] = {
             id_producto: id_producto,
             cantidad: cantidad,
             monto: monto,
-            envases: envases,
+            bolsa: bolsa,
             precioU: precioU
         };
     }

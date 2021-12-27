@@ -47,7 +47,7 @@ class controllerEmitirProforma{
             include_once("../model/detalleProforma.php");
             $objDetalleProforma = new detalleProforma;
             $objDetalleProforma->insertarDetalleProforma($id_producto,$cantidad, $bolsa,$monto,$idProforma);
-
+            
         }
         public function BuscarIDProforma($id){
             include_once("../model/proforma.php");

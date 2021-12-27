@@ -108,7 +108,7 @@
                     <div class="col">
                     </div>
                     <div class="col">
-                        <button id="emitirComprobante" class="btn btn-primary" onclick="EmitirComprobante()" disabled>Emitir Comprobante</button>
+                        <button id="emitirBoleta" class="btn btn-primary" onclick="EmitirBoleta()" disabled>Emitir Boleta</button>
                         <form class="cancelar" method="post" action="../moduloSeguridad/getUsuario.php">                                                       
                             <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
                                 Cancelar

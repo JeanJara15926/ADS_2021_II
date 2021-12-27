@@ -105,13 +105,13 @@ class controllerEmitirBoleta{
 
                 $cantidad=$DetalleProforma[$i]['cantidad'];
                 $monto=$DetalleProforma[$i]['monto'];
-                
- 
+                $bolsa=$DetalleProforma[$i]['bolsa'];
+                $precioUnitario=($monto-$bolsa)/$cantidad;
                 $resultado.="<tr>
                                 <td>".$DetalleProforma[$i]['producto']."</td>
                                 <td>".$cantidad."</td>
                                 <td>".$precioUnitario."</td>
-                               
+                                <td>".$bolsa."</td>
                                 <td>".$monto."</td>
                             </tr>";
 

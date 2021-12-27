@@ -33,11 +33,12 @@ else if(isset($_POST['Proforma'])){
     $fechaProforma=$Proforma['fecha'];
     $fechaActual=date('Y-m-d');
     $fechaValidar=date("Y-m-d",strtotime($fechaProforma."+ 6 days"));// para la validez de 7 dias
-
+    
     if(strtotime($fechaValidar)>=strtotime($fechaActual))
     {
         include_once("controllerEmitirBoleta.php");
         $objController = new controllerEmitirBoleta;
+        
         $objController->ExtraerDetalleProforma($Proforma);
     }else{
         echo "0";
