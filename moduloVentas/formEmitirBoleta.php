@@ -88,7 +88,7 @@
                                     <tr>
                                         <th scope="col">Producto</th>
                                         <th scope="col">Cantidad</th>
-                                        <th scope="col">Precio Unitario</th>                              
+                                        <th scope="col">Precio Unitario</th>                    
                                         <th scope="col">Monto</th>
                                     </tr>
                                 </thead>
