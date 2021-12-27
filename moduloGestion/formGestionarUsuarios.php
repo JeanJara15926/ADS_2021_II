@@ -54,8 +54,27 @@
                             <label for="text_Rol" class="col-sm-2 col-form-label">ROL</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="text_Rol">
+
+                                <select class="form-select form-select-sm" id="rol" aria-label=".form-select-sm example">
+                                            <option value="Administrador">ADMINISTRADOR</option>
+                                            <option value="Cajero">CAJERO</option>
+                                            <option value="Vendedor">VENDEDOR</option>
+                                            <option value="Despachador">DESPACHADOR</option>
+                                </select>
+
                             </div>
                         </div>
+
+
+                        
+
+
+
+
+
+
+
+
 
                         <div class="mb-3 row">
                             <label for="text_Login" class="col-sm-2 col-form-label">LOGIN</label>
@@ -78,24 +97,15 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
-                            <div class="col-sm-10">                                
-                                <input type="file" class="form-control" name="imagen" id="imagen">
-                            </div>
-                        </div>
-
-                        
 
 
-
+                    
 
                         <div class="mb-3 row">
                             <div class="col-5"></div>
                             <div class="col">                                
-                                <input type="button" class="btn btn-primary btnmostrar" value="CREAR USUARIO" onclick="crearusuario()"/>
-                                <input type="button" class="btn btn-primary btnOculto" onclick="modificausuario()" value="Modificar" />
-                                <input type="hidden" id="idmoficar">
+                            <input type="button" value="Crear Usuario" id="registrar" onclick="registrarUsuario()" class="btn btn-primary btnRegistrarUsuarios">
+                                        <input type="button" value="Modificar" id="editar" onclick="guardarUsuario()" class="btn btn-primary btnModificarUsuarios">
                             </div>
                         </div>
                     </div>
@@ -106,22 +116,36 @@
             <div class="container">
                 <div class="">
 
+
+
+
+                
+                            <form action="" method="post">
+                            <div class="form-group">
+                                
+                                <input type="hidden" id="idOcultoModificar">
+                                
+                            </div>
+                    </form>
+                
+
+
+
+
                     <h1 class="text-center">LISTA DE USUARIOS</h1>
 
                     <div class="mb-3 row">
                         <div class="col-11">
-                            <input type="text" class="form-control" id="BUsuario" placeholder="Ingrese el nombre del usuario">
-                            
-                        </div>
-
-                        <div class="col">
+                        <div class="col-lg-6 ml-auto">
+                                    <form action="" method="post">
+                            <input type="text" class="form-control" onkeyup="BuscarUsuarioLogin()" id="BUsuario" placeholder="Ingrese el nombre del usuario">
                             <button class="btn btn-success" onclick="Buscarusuario()">Buscar</button>
                         </div>
+                        </form>
+                                </div>
+
+                        
                     </div>
-
-                    
-
-                    
 
                     <div>
                         <table class="table table-hover table-resposive text-center">
@@ -134,7 +158,7 @@
                                         <th>LOGIN</th>
                                         <th>PASSWORD</th>
                                         <th>ESTADO</th>
-                                        <th>MODIFICAR</th>
+                                        <th>EDITAR</th>
                                         <th>ELIMINAR</th>
                                     </tr>
                                 </thead>

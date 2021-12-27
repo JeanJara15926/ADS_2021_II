@@ -1,96 +1,83 @@
 <?php
 class controllerGestionarUsuario{
 
-    public function insertarUsuario($idUsuario,$nombre,$dni,$rol,$login,$password,$estado){
-        include_once("../model/usuario.php");
-        $objUsuario = new usuario;
-        $anwer=$objUsuario->insertarUsuario($idUsuario,$nombre,$dni,$rol,$login,$password,$estado);
-        if($answer=0){
-            echo "Error al insertar Usuario";
-        }else{
-            echo "1";
+        public function ExtraerUsuarios(){
+            include_once("../model/usuario.php");
+            $objUsuario = new usuario;
+            $ListaUsuario = $objUsuario->ExtraerUsuarios();
+            $filas=count($ListaUsuario);
+            $arr=array();
+            for($i=0;$i<$filas;$i++){
+                $arr[$i] = array(
+                    'idUsuario' => $ListaUsuario[$i]['idUsuario'],
+                    'login' => $ListaUsuario[$i]['login'],
+                    'dni' => $ListaUsuario[$i]['DNI'], 
+                    'nombre' => $ListaUsuario[$i]['nombre'],
+                    'password' => $ListaUsuario[$i]['password'],
+					'preguntaS' => $ListaUsuario[$i]['preguntaS'],
+                    'respuestaS' => $ListaUsuario[$i]['respuestaS'],
+                    'rol' => $ListaUsuario[$i]['rol'],
+                    'estado' => $ListaUsuario[$i]['estado'],
+                );
+            }
+            echo json_encode($arr);
+        
         }
-    }
-
-
-    //Extraer Usuario
-    public function ExtraerUsuarios(){
-        include_once("../model/usuario.php");
-        $objUsuario_ii = new usuario;
-        $ListaUsuarios = $objUsuario_ii->ExtraerUsuarios();
-        $filas=count($ListaUsuarios);
-        $arr=array();
-        for($i=0;$i<$filas;$i++){
-            $arr[$i] = array(
-                'idUsuario' => $ListaUsuarios[$i]['idUsuario'],
-                'nombre' => $ListaUsuarios[$i]['nombre'], 
-                'dni' => $ListaUsuarios[$i]['dni'],
-                'rol' => $ListaUsuarios[$i]['rol'],
-                'login' => $ListaUsuarios[$i]['login'],
-                'password' => $ListaUsuarios[$i]['password'],
-                'estado' => $ListaUsuarios[$i]['estado'],
-            );
+        public function UpdateUsuarios($idGuardarUsuarioM,$user,$contra,$nombre,$dni,$pes,$res,$rol){
+            include_once("../model/usuario.php");
+            $objUsuario = new usuario;
+            $objUsuario->UpdateUsuarios($idGuardarUsuarioM,$user,$contra,$nombre,$dni,$pes,$res,$rol);
         }
-        echo json_encode($arr);
-    }
-
-    public function BuscarUsuarioEditar($id_editar){
-        include_once("../model/usuario.php");
-        $objUsuario_ii = new usuario;
-        $Usuario = $objUsuario_ii->BuscarUsuarioEditar($id_editar);
-        $arr =  array(
-            'idUsuario' => $Usuario[0]['idUsuario'],
-            'nombre' => $Usuario[0]['nombre'], 
-            'dni' => $Usuario[0]['dni'],
-            'rol' => $Usuario[0]['rol'],
-            'login' => $Usuario[0]['login'],
-            'password' => $Usuario[0]['password'],
-            'estado' => $Usuario[0]['estado']
-        );
-        echo json_encode($arr);
-    }
-
-    public function EliminarUsuario($idUsuario){
-        include_once("../model/usuario.php");
-        $objUsuario_ii = new usuario;
-        $objUsuario_ii-> EliminarUsuario($idUsuario);
-    }
-
-    
-    public function BuscarUsuario($nombre){
-        include_once("../model/usuario.php");
-        $objUsuario_ii = new usuario;
-        $ListaUsuarios = $objUsuario_ii->BuscarUsuarioNombre($nombre);
-        $filas=count($ListaUsuarios);
-        $arr=array();
-        for($i=0;$i<$filas;$i++){
-            $arr[$i] = array(
-                'idUsuario' => $ListaUsuarios[$i]['idUsuario'],
-                'nombre' => $ListaUsuarios[$i]['nombre'], 
-                'dni' => $ListaUsuarios[$i]['dni'],
-                'rol' => $ListaUsuarios[$i]['rol'],
-                'login' => $ListaUsuarios[$i]['login'],
-                'password' => $ListaUsuarios[$i]['password'],
-                'estado' => $ListaUsuarios[$i]['estado']
-            );
+        public function BuscarUsuarioEdit($idEditar){
+            include_once("../model/usuario.php");
+            $objUsuario = new usuario;
+            $resultado = $objUsuario->BuscarUsuarioEdit($idEditar);
+            $arr =  array(
+                        'idUsuario' => $resultado[0]['idUsuario'],
+                        'login' => $resultado[0]['login'],
+                        'dni' => $resultado[0]['DNI'], 
+                        'nombre' => $resultado[0]['nombre'],
+                        'password' => $resultado[0]['password'],
+                        'preguntaS' => $resultado[0]['preguntaS'],
+                        'respuestaS' => $resultado[0]['respuestaS'],
+                        'rol' => $resultado[0]['rol'],
+                        'estado' => $resultado[0]['estado']
+                    );
+            echo json_encode($arr);
         }
-        echo json_encode($arr);
-    }
-
-    public function modificarUsuario($id_EditarChambicito,$idUsuario,$nombre,$dni,$rol,$login,$password,$estado){
-        include_once("../model/usuario.php");               
-        $objUsuario = new usuario;
-        $objProducto->modificarUsuario($id_EditarChambicito,$idUsuario,$nombre,$dni,$rol,$login,$password,$estado);
-        if($retorno=0){
-            echo "Error al actualizar Usuario";
-        }else{
-            echo "1";            
+        public function insertarUsuarios($user,$contra,$nombre,$dni,$pes,$res,$rol){
+            include_once("../model/usuario.php");
+            $objUsuario = new usuario;
+            $objUsuario->insertarUsuarios($user,$contra,$nombre,$dni,$pes,$res,$rol);
         }
+        public function EliminarUsuario($idEliminar){
+            include_once("../model/usuario.php");
+            $objUsuario = new usuario;
+            $objUsuario->EliminarUsuario($idEliminar);
+        }
+        
+        public function BuscarUsuarioLogin($buscar){
+            include_once("../model/usuario.php");
+            $objUsuario = new usuario;
+            $ListaUsuario = $objUsuario->BuscarUsuarioLogin($buscar);
+            $filas=count($ListaUsuario);
+            $arr=array();
+            for($i=0;$i<$filas;$i++){
+                $arr[$i] = array(
+                    'idUsuario' => $ListaUsuario[$i]['idUsuario'],
+                    'login' => $ListaUsuario[$i]['login'],
+                    'dni' => $ListaUsuario[$i]['DNI'], 
+                    'nombre' => $ListaUsuario[$i]['nombre'],
+                    'password' => $ListaUsuario[$i]['password'],
+					'preguntaS' => $ListaUsuario[$i]['preguntaS'],
+                    'respuestaS' => $ListaUsuario[$i]['respuestaS'],
+                    'rol' => $ListaUsuario[$i]['rol'],
+                    'estado' => $ListaUsuario[$i]['estado'],
+                );
+            }
+            echo json_encode($arr);
+        
+        }
+        
     }
-
-}
-
-
-
-
 ?>
