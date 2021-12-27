@@ -11,10 +11,10 @@
                 $id_producto=$detalleBoleta[$i]['id_producto'];
                 $cantidad=$detalleBoleta[$i]['cantidad'];
                 $precioU=floatval($detalleBoleta[$i]['precioU']);
-                $envases=$detalleBoleta[$i]['envases'];
+                $bolsa=$detalleBoleta[$i]['bolsa'];
                 $monto=$detalleBoleta[$i]['monto'];
-                $SQLP ="INSERT INTO detalleboleta (id_producto,id_boleta,cantidad,precioU,envases,monto)
-                        VALUES($id_producto,$idBoleta,$cantidad,$precioU,$envases,$monto)";
+                $SQLP ="INSERT INTO detalleboleta (id_producto,id_boleta,cantidad,precioU,bolsa,monto)
+                        VALUES($id_producto,$idBoleta,$cantidad,$precioU,$bolsa,$monto)";
                 
                 if ($conn->query($SQLP) === TRUE) {
                     $res ="1";
