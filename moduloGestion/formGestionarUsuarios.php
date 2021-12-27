@@ -12,7 +12,7 @@
                         <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
                     </div>
                     <div class="col">
-                        <form name="form3" method="post" action="../moduloSeguridad/getUsuario.php">                                                       
+                        <form name="form3" method="post" action="../moduloSeguridad/getUsuarios.php">                                                       
                                 <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
                                     VOLVER<i class="fa fa-arrow-circle-left"  style="margin-left:10px"></i>
                                 </button>
@@ -55,7 +55,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="text_Rol">
 
-                                <select class="form-select form-select-sm" id="rol" aria-label=".form-select-sm example">
+                                <select class="form-select form-select-sm" id="text_Rol" aria-label=".form-select-sm example">
                                             <option value="Administrador">ADMINISTRADOR</option>
                                             <option value="Cajero">CAJERO</option>
                                             <option value="Vendedor">VENDEDOR</option>

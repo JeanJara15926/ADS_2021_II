@@ -4,12 +4,12 @@
      session_start();
      $_SESSION['login'];
      include_once("formGestionarUsuarios.php");
-     $objEmitirU = new formGestionarUsuarios;
-     $objEmitirU -> formGestionarUsuariosShow();
+     $objEmitirP = new formGestionarUsuarios;
+     $objEmitirP -> formGestionarUsuariosShow();
  }
  else{
      include_once("../shared/formMensajeSistema.php");
      $objMensaje = new formMensajeSistema;
-     $objMensaje -> formMensajeSistemaShow("Acceso denegado","<a href='../index.php'>Ir al Inicio</a>");
+     $objMensaje -> formMensajeSistemaShow("Usuario no encontrado","<a href='../index.php'>Ir al Inicio</a>");
  }
  ?>

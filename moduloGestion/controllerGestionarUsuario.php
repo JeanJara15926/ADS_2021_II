@@ -1,5 +1,5 @@
 <?php
-class controllerGestionarUsuarios{
+class controllerGestionarUsuario{
 
         public function ExtraerUsuarios(){
             include_once("../model/usuario.php");
@@ -10,45 +10,42 @@ class controllerGestionarUsuarios{
             for($i=0;$i<$filas;$i++){
                 $arr[$i] = array(
                     'idUsuario' => $ListaUsuario[$i]['idUsuario'],
-                    'login' => $ListaUsuario[$i]['login'],
-                    'dni' => $ListaUsuario[$i]['DNI'], 
                     'nombre' => $ListaUsuario[$i]['nombre'],
-                    'password' => $ListaUsuario[$i]['password'],
-					//'preguntaS' => $ListaUsuario[$i]['preguntaS'],
-                    //'respuestaS' => $ListaUsuario[$i]['respuestaS'],
+                    'dni' => $ListaUsuario[$i]['dni'],
                     'rol' => $ListaUsuario[$i]['rol'],
+                    'login' => $ListaUsuario[$i]['login'],
+                    'password' => $ListaUsuario[$i]['password'],
                     'estado' => $ListaUsuario[$i]['estado'],
+				    
                 );
             }
             echo json_encode($arr);
         
         }
-        public function UpdateUsuarios($idGuardarUsuarioM,$user,$contra,$nombre,$dni,$pes,$res,$rol){
+        public function UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra,$estado){
             include_once("../model/usuario.php");
             $objUsuario = new usuario;
-            $objUsuario->UpdateUsuarios($idGuardarUsuarioM,$user,$contra,$nombre,$dni,$pes,$res,$rol);
+            $objUsuario->UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra,$estado);
         }
         public function BuscarUsuarioEdit($idEditar){
             include_once("../model/usuario.php");
             $objUsuario = new usuario;
             $resultado = $objUsuario->BuscarUsuarioEdit($idEditar);
             $arr =  array(
-                        'idUsuario' => $resultado[0]['idUsuario'],
-                        'login' => $resultado[0]['login'],
-                        'dni' => $resultado[0]['DNI'], 
-                        'nombre' => $resultado[0]['nombre'],
-                        'password' => $resultado[0]['password'],
-                        //'preguntaS' => $resultado[0]['preguntaS'],
-                        //'respuestaS' => $resultado[0]['respuestaS'],
-                        'rol' => $resultado[0]['rol'],
-                        'estado' => $resultado[0]['estado']
-                    );
+                'idUsuario' => $resultado[0]['idUsuario'],
+                'nombre' => $resultado[0]['nombre'],
+                'dni' => $resultado[0]['DNI'],
+                'rol' => $resultado[0]['rol'],
+                'login' => $resultado[0]['login'],
+                'password' => $resultado[0]['password'],
+                'estado' => $resultado[0]['estado'],
+            );
             echo json_encode($arr);
         }
-        public function insertarUsuarios($user,$contra,$nombre,$dni,$pes,$res,$rol){
+        public function insertarUsuarios($nombre,$dni,$rol,$user,$contra,$estado){
             include_once("../model/usuario.php");
             $objUsuario = new usuario;
-            $objUsuario->insertarUsuarios($user,$contra,$nombre,$dni,$pes,$res,$rol);
+            $objUsuario->insertarUsuarios($nombre,$dni,$rol,$user,$contra,$estado);
         }
         public function EliminarUsuario($idEliminar){
             include_once("../model/usuario.php");
@@ -65,13 +62,11 @@ class controllerGestionarUsuarios{
             for($i=0;$i<$filas;$i++){
                 $arr[$i] = array(
                     'idUsuario' => $ListaUsuario[$i]['idUsuario'],
-                    'login' => $ListaUsuario[$i]['login'],
-                    'dni' => $ListaUsuario[$i]['DNI'], 
                     'nombre' => $ListaUsuario[$i]['nombre'],
-                    'password' => $ListaUsuario[$i]['password'],
-					//'preguntaS' => $ListaUsuario[$i]['preguntaS'],
-                    //'respuestaS' => $ListaUsuario[$i]['respuestaS'],
+                    'dni' => $ListaUsuario[$i]['DNI'],
                     'rol' => $ListaUsuario[$i]['rol'],
+                    'login' => $ListaUsuario[$i]['login'],
+                    'password' => $ListaUsuario[$i]['password'],
                     'estado' => $ListaUsuario[$i]['estado'],
                 );
             }
