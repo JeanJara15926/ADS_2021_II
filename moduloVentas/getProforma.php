@@ -1,8 +1,8 @@
 <?php
     function validarCampos($detalleProforma,$num_filas){
-        $devolver;
+       // $devolver;
         for($i=0;$i<$num_filas;$i++){
-            if( $detalleProforma[$i]['cantidad'] > 0 && $detalleProforma[$i]['envases'] >= 0 && $detalleProforma[$i]['monto'] > 0 ){
+            if( $detalleProforma[$i]['cantidad'] > 0 && $detalleProforma[$i]['bolsa'] >= 0 && $detalleProforma[$i]['monto'] > 0 ){
                 $devolver = 1;
             }
             else{
@@ -58,7 +58,7 @@
                     /**********************Inserto detalle proforma */
                     
                     $objController->insertarDetalleProforma($detalleProforma[$i]['id_producto'],
-                    $detalleProforma[$i]['cantidad'],$detalleProforma[$i]['envases'],$detalleProforma[$i]['monto'],$idProforma);                  
+                    $detalleProforma[$i]['cantidad'],$detalleProforma[$i]['bolsa'],$detalleProforma[$i]['monto'],$idProforma);                  
                 }
             }
         }

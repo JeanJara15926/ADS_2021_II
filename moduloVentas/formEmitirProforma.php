@@ -9,13 +9,13 @@
                 <div class="container">
                     <p class="usuario">Usuario activo:<?php echo $_SESSION['login'] ?> </p>
                     <div class="row">
-                        <div class="col-6 lista">
+                        <div class="col-12 lista">
                                 <input type="text" id="txtNombre" placeholder="Buscar por nombre" size="60"/>
                                 <button onclick="BuscarProductoNombre()" class="btnBuscarPr">Buscar</button>
                             <div id="lista_productos" class="lista_productos">
                             </div>
                         </div>
-                        <div class="col-6 proforma">
+                        <div class="col-8 proforma">
                             <label>Codigo: </label>
                             <input type="text" id="codigo" value="" disabled/>
                             <label>Fecha: </label>
@@ -26,9 +26,9 @@
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Producto</th>
                                         <th scope="col">Precio unitario</th>
-                                        <th scope="col">Envases</th>
+                                        <th scope="col">Bolsa</th>
                                         <th scope="col">Monto</th>
-                                        <th scope="col" class="moverimpri">Accion</th>
+                                        <th scope="col" class="moverimpri">Desechar</th>
                                     </tr>
                                 </thead>
                                 <tbody id="lista-proforma">
@@ -48,9 +48,9 @@
                             
                         </div>
                         <div class="col">
-                            <button id="emitir" class="btn btn-primary" onclick="EmitirProforma()">Emitir</button>
+                            <button id="emitir"  class="btn btn-dark" onclick="EmitirProforma()">Emitir</button>
                             <form class="cancelar" method="post" action="../moduloSeguridad/getUsuario.php">                                                       
-                                <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
+                                <button  style="color: white" name="retrocede" type="submit" class="btn btn-secondary" id="retrocede">
                                     Cancelar
                                 </button>
                                 <input name="login" type="hidden" id="login" value="<?php echo $_SESSION['login'] ?>">					

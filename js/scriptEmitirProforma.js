@@ -33,8 +33,8 @@ function enviarPro(idlngp){
 function ActualizarMontos(id){
     var cantidad=parseFloat(document.getElementById("cant"+id).value);
     var precioUnitario=parseFloat(document.getElementById("prec"+id).value);
-    var envases=parseInt(document.getElementById("enva"+id).value);
-    var monto= (cantidad*precioUnitario)+envases;
+    var bolsa=parseInt(document.getElementById("enva"+id).value);
+    var monto= (cantidad*precioUnitario)+bolsa;
     document.getElementById("monto"+id).value=monto.toString();
     ActualizarMontoTotal();
 }
@@ -112,10 +112,10 @@ function EmitirProforma(){
     for(var i=0;i<ListaProforma.length;i++){
         var _id_producto=ListaProforma[i];
         var _cantidad=parseFloat(document.getElementById("cant"+_id_producto).value);
-        var _envases=parseInt(document.getElementById("enva"+_id_producto).value);
+        var _bolsa=parseInt(document.getElementById("enva"+_id_producto).value);
         var _monto=parseFloat(document.getElementById("monto"+_id_producto).value);
 
-        _DetalleProforma[i]={id_producto:_id_producto, cantidad:_cantidad, envases:_envases,monto:_monto};
+        _DetalleProforma[i]={id_producto:_id_producto, cantidad:_cantidad, bolsa:_bolsa,monto:_monto};
     }
 
 
