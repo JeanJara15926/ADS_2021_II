@@ -150,28 +150,33 @@ footer{
 
 
 .quitar{
-    background-color: red;
+    background-color: rgb(77, 72, 72);
     color: seashell;
+   
+
 }
 .producto img{
-    width: 100%;
+    width: 50%;
     height: 120px;
     display: block;
+    top :50%;
+    left: 50%;
+   transform: translate(50%,-0%);
     
 }
 .producto{
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(248, 244, 244, 0.8);
     padding: 3px;
     text-align: center;
-    background: black;
+    background: rgb(206, 123, 192);
     color: white;
     cursor: pointer;
 }
 .lista_productos{
     display: grid;
-    grid-gap: 7px;
+    grid-gap: 40px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 5px;
+    padding: 40px;
     margin-top: 20px;
 }
 .producto span{
@@ -200,12 +205,12 @@ footer{
 }
 .btnBuscarPr{
     color: white;
-    padding: 5px 20px;
+    padding: 5px 50px;
     border-radius: .3em;
     border: white;
-    float: right;
+    float: none;
     display: inline;
-    background-color: #f93449;
+    background-color: #808080;
 }
 .btnBuscarChambi{
     color: white;
@@ -218,11 +223,13 @@ footer{
 .fa-user-alt{
     margin-right: 15px;
     font-size: 30px;
-    color: #f93449;
+    color: #302f2f;
+    
 }
 
 .cancelar{
     display: inline;
+    
 }
 
 @media print{

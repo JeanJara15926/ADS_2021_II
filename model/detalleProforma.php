@@ -2,9 +2,9 @@
 include_once("conexion.php");
     class detalleProforma extends conexion{
 
-        public function insertarDetalleProforma($id_producto,$cantidad, $envases,$monto,$idProforma){
+        public function insertarDetalleProforma($id_producto,$cantidad, $bolsa,$monto,$idProforma){
             $conn=$this->conectar();
-            $SQLP ="INSERT INTO detalleproforma(id_producto, cantidad, envases, monto, id_proforma) VALUES ($id_producto,$cantidad,$envases,$monto,$idProforma)";
+            $SQLP ="INSERT INTO detalleproforma(id_producto, cantidad, bolsa, monto, id_proforma) VALUES ($id_producto,$cantidad,$bolsa,$monto,$idProforma)";
             $result = mysqli_query($conn,$SQLP);
             $this->desconectar($conn);  
             
@@ -12,7 +12,7 @@ include_once("conexion.php");
 
         public function ExtraerDetalleProforma($idProforma){
             $conn=$this->conectar();
-            $SQLP ="SELECT P.id,P.producto,D.cantidad,D.envases,D.monto 
+            $SQLP ="SELECT P.id,P.producto,D.cantidad,D.bolsa,D.monto 
                     FROM producto P,detalleproforma D 
                     WHERE P.id=D.id_producto AND D.id_proforma=$idProforma";
             $result = mysqli_query($conn,$SQLP);

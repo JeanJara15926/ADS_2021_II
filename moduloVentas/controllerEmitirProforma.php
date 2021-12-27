@@ -43,10 +43,10 @@ class controllerEmitirProforma{
             $codigoNuevo = $objProforma->insertarProforma($codigo,$fecha,$monto);
             echo $codigoNuevo;
         }
-        public function insertarDetalleProforma($id_producto,$cantidad, $envases,$monto,$idProforma){
+        public function insertarDetalleProforma($id_producto,$cantidad, $bolsa,$monto,$idProforma){
             include_once("../model/detalleProforma.php");
             $objDetalleProforma = new detalleProforma;
-            $objDetalleProforma->insertarDetalleProforma($id_producto,$cantidad, $envases,$monto,$idProforma);
+            $objDetalleProforma->insertarDetalleProforma($id_producto,$cantidad, $bolsa,$monto,$idProforma);
 
         }
         public function BuscarIDProforma($id){
