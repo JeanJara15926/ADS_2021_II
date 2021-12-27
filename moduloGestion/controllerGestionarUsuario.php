@@ -1,5 +1,5 @@
 <?php
-class controllerGestionarUsuario{
+class controllerGestionarUsuarios{
 
         public function ExtraerUsuarios(){
             include_once("../model/usuario.php");
@@ -14,8 +14,8 @@ class controllerGestionarUsuario{
                     'dni' => $ListaUsuario[$i]['DNI'], 
                     'nombre' => $ListaUsuario[$i]['nombre'],
                     'password' => $ListaUsuario[$i]['password'],
-					'preguntaS' => $ListaUsuario[$i]['preguntaS'],
-                    'respuestaS' => $ListaUsuario[$i]['respuestaS'],
+					//'preguntaS' => $ListaUsuario[$i]['preguntaS'],
+                    //'respuestaS' => $ListaUsuario[$i]['respuestaS'],
                     'rol' => $ListaUsuario[$i]['rol'],
                     'estado' => $ListaUsuario[$i]['estado'],
                 );
@@ -38,8 +38,8 @@ class controllerGestionarUsuario{
                         'dni' => $resultado[0]['DNI'], 
                         'nombre' => $resultado[0]['nombre'],
                         'password' => $resultado[0]['password'],
-                        'preguntaS' => $resultado[0]['preguntaS'],
-                        'respuestaS' => $resultado[0]['respuestaS'],
+                        //'preguntaS' => $resultado[0]['preguntaS'],
+                        //'respuestaS' => $resultado[0]['respuestaS'],
                         'rol' => $resultado[0]['rol'],
                         'estado' => $resultado[0]['estado']
                     );
@@ -69,8 +69,8 @@ class controllerGestionarUsuario{
                     'dni' => $ListaUsuario[$i]['DNI'], 
                     'nombre' => $ListaUsuario[$i]['nombre'],
                     'password' => $ListaUsuario[$i]['password'],
-					'preguntaS' => $ListaUsuario[$i]['preguntaS'],
-                    'respuestaS' => $ListaUsuario[$i]['respuestaS'],
+					//'preguntaS' => $ListaUsuario[$i]['preguntaS'],
+                    //'respuestaS' => $ListaUsuario[$i]['respuestaS'],
                     'rol' => $ListaUsuario[$i]['rol'],
                     'estado' => $ListaUsuario[$i]['estado'],
                 );
