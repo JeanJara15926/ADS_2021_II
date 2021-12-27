@@ -28,13 +28,6 @@
                     <div class="">
                         
                         <h1 class="text-center">REGISTRO USUARIO ♂♀</h1>
-                        
-                        <div class="mb-3 row">
-                            <label for="text_IdUsuario" class="col-sm-2 col-form-label">ID USUARIO</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_IdUsuario">
-                            </div>
-                        </div>
 
                         <div class="mb-3 row">
                             <label for="text_Nombre" class="col-sm-2 col-form-label">NOMBRE</label>
@@ -53,13 +46,12 @@
                         <div class="mb-3 row">
                             <label for="text_Rol" class="col-sm-2 col-form-label">ROL</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_Rol">
+                                
 
                                 <select class="form-select form-select-sm" id="text_Rol" aria-label=".form-select-sm example">
                                             <option value="Administrador">ADMINISTRADOR</option>
                                             <option value="Cajero">CAJERO</option>
                                             <option value="Vendedor">VENDEDOR</option>
-                                            <option value="Despachador">DESPACHADOR</option>
                                 </select>
 
                             </div>
@@ -115,18 +107,7 @@
             </div>
             <div class="container">
                 <div class="">
-
-
-
-
-                
-                            <form action="" method="post">
-                            <div class="form-group">
-                                
-                                <input type="hidden" id="idOcultoModificar">
-                                
-                            </div>
-                    </form>
+                    
                 
 
 
@@ -135,18 +116,17 @@
                     <h1 class="text-center">LISTA DE USUARIOS</h1>
 
                     <div class="mb-3 row">
-                        <div class="col-11">
-                        <div class="col-lg-6 ml-auto">
-                                    <form action="" method="post">
+                    
+                        
+                        <div class="col-sm-10">
+                            <form action="" method="post">
                             <input type="text" class="form-control" onkeyup="BuscarUsuarioLogin()" id="BUsuario" placeholder="Ingrese el nombre del usuario">
                             <button class="btn btn-success" onclick="Buscarusuario()">Buscar</button>
+                            </form>
                         </div>
-                        </form>
-                                </div>
-
+                        
                         
                     </div>
-
                     <div>
                         <table class="table table-hover table-resposive text-center">
                                 <thead class="thead-dark">
@@ -168,6 +148,7 @@
                     </div>
                 </div>
             </div>
+
             <script src="../js/scriptGestionarUsuario.js"></script>
             <?php          
                 $this->piePaginaShow();
