@@ -1,5 +1,5 @@
 <?php
- //$boton = $_POST['bntOk'];
+
  if(isset($_POST['bntOk'])){
      session_start();
      $_SESSION['login'];

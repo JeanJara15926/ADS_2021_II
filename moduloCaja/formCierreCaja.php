@@ -7,7 +7,7 @@
             <div class="container usuario">
                 <div class="row">
                     <div class="col-10">
-                        <!--<p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>-->
+                        <?php echo $_SESSION['login'] ?>-->
                     </div>
                     <div class="col">
                         <form name="form3" method="post" action="../moduloSeguridad/getUsuario.php">                                                       

@@ -3,7 +3,6 @@
     include_once("../shared/formulario.php");
     class formEmitirBoleta extends formulario{
 
-
         public function formEmitirBoletaShow(){
             date_default_timezone_set('UTC');
             $this -> encabezadoShowSimple("Emitir Comprobante");
