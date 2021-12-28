@@ -105,7 +105,7 @@ include_once("conexion.php");
                 $result = mysqli_query($conn,$SQLP);
                 $retorno = 1;
             }else{
-                if (move_uploaded_file($imagen["tmp_name"], "../imagenes/".$imagen['name'])) {
+                if (move_uploaded_file($imagen["tmp_name"], "../img/CARTERAS-EDMAR/".$imagen['name'])) {
                     $nom_imagen=$imagen['name'];
                     $SQLP ="INSERT INTO producto(producto, precioU, stock, imagen) 
                     VALUES ('$producto',$precio, $stock,'$nom_imagen')";

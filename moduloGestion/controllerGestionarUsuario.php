@@ -16,7 +16,6 @@ class controllerGestionarUsuario{
                     'login' => $ListaUsuario[$i]['login'],
                     'password' => $ListaUsuario[$i]['password'],
                     'estado' => $ListaUsuario[$i]['estado'],
-				    
                 );
             }
             echo json_encode($arr);
