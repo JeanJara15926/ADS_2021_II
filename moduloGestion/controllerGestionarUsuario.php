@@ -22,10 +22,10 @@ class controllerGestionarUsuario{
             echo json_encode($arr);
         
         }
-        public function UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra,$estado){
+        public function UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra){
             include_once("../model/usuario.php");
             $objUsuario = new usuario;
-            $objUsuario->UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra,$estado);
+            $objUsuario->UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra);
         }
         public function BuscarUsuarioEdit($idEditar){
             include_once("../model/usuario.php");
@@ -42,10 +42,10 @@ class controllerGestionarUsuario{
             );
             echo json_encode($arr);
         }
-        public function insertarUsuarios($nombre,$dni,$rol,$user,$contra,$estado){
+        public function insertarUsuarios($nombre,$dni,$rol,$user,$contra){
             include_once("../model/usuario.php");
             $objUsuario = new usuario;
-            $objUsuario->insertarUsuarios($nombre,$dni,$rol,$user,$contra,$estado);
+            $objUsuario->insertarUsuarios($nombre,$dni,$rol,$user,$contra);
         }
         public function EliminarUsuario($idEliminar){
             include_once("../model/usuario.php");
@@ -63,7 +63,7 @@ class controllerGestionarUsuario{
                 $arr[$i] = array(
                     'idUsuario' => $ListaUsuario[$i]['idUsuario'],
                     'nombre' => $ListaUsuario[$i]['nombre'],
-                    'dni' => $ListaUsuario[$i]['DNI'],
+                    'dni' => $ListaUsuario[$i]['dni'],
                     'rol' => $ListaUsuario[$i]['rol'],
                     'login' => $ListaUsuario[$i]['login'],
                     'password' => $ListaUsuario[$i]['password'],
