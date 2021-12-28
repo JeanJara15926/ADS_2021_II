@@ -7,10 +7,12 @@
 
 
             <div class="container usuario">
-                <div class="row">                    
+                <div class="row">
+
                     <div class="col-10">
                         <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
                     </div>
+
                     <div class="col">
                         <form name="form3" method="post" action="../moduloSeguridad/getUsuarios.php">                                                       
                                 <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
@@ -19,6 +21,7 @@
                                 <input name="login" type="hidden" id="login" value="<?php echo $_SESSION['login'] ?>">					
                         </form></p>
                     </div>
+
                 </div>
             </div>
 
@@ -44,9 +47,8 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="text_Rol" class="col-sm-2 col-form-label">ROL</label>
+                           <label for="text_Rol" class="col-sm-2 col-form-label">ROL</label>
                             <div class="col-sm-10">
-                                
 
                                 <select class="form-select form-select-sm" id="text_Rol" aria-label=".form-select-sm example">
                                             <option value="Administrador">ADMINISTRADOR</option>
@@ -56,17 +58,6 @@
 
                             </div>
                         </div>
-
-
-                        
-
-
-
-
-
-
-
-
 
                         <div class="mb-3 row">
                             <label for="text_Login" class="col-sm-2 col-form-label">LOGIN</label>
@@ -82,24 +73,23 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="text_Estado" class="col-sm-2 col-form-label">ESTADO</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_Estado">
-                            </div>
-                        </div>
+                        
 
 
 
                     
 
                         <div class="mb-3 row">
+
                             <div class="col-5"></div>
+                            
                             <div class="col">                                
-                            <input type="button" value="Crear Usuario" id="registrar" onclick="registrarUsuario()" class="btn btn-primary btnRegistrarUsuarios">
-                                        <input type="button" value="Modificar" id="editar" onclick="guardarUsuario()" class="btn btn-primary btnModificarUsuarios">
+                            <input type="button" class="btn btn-primary btnRegistrarUsuarios" value="Crear Usuario" id="registrar" onclick="registrarUsuario()">
+                            <input type="button" class="btn btn-primary btnModificarUsuarios" value="Modificar" id="editar" onclick="guardarUsuario()">
                             </div>
+
                         </div>
+
                     </div>
 
                 </form>
@@ -107,18 +97,12 @@
             </div>
             <div class="container">
                 <div class="">
-                    
-                
-
-
-
-
-                    <h1 class="text-center">LISTA DE USUARIOS</h1>
+                <h1 class="text-center">LISTA DE USUARIOS</h1>
 
                     <div class="mb-3 row">
                     
                         
-                        <div class="col-sm-10">
+                        <div class="col-11">
                             <form action="" method="post">
                             <input type="text" class="form-control" onkeyup="BuscarUsuarioLogin()" id="BUsuario" placeholder="Ingrese el nombre del usuario">
                             <button class="btn btn-success" onclick="Buscarusuario()">Buscar</button>
@@ -137,7 +121,7 @@
                                         <th>ROL</th>
                                         <th>LOGIN</th>
                                         <th>PASSWORD</th>
-                                        <th>ESTADO</th>
+                                        
                                         <th>EDITAR</th>
                                         <th>ELIMINAR</th>
                                     </tr>

@@ -1,75 +1,89 @@
+$('#editar').hide();
 ExtraerUsuarios();
-$('.btnOculto').hide();
-var ListaUsuarios = new Array();
-
-function editarUsuario(id_editar) {
-    $('.btnmostrar').hide();
-    $('.btnOculto').show();
-    $('#idmoficar').val("");
-    $.post("../moduloGestion/getUsuarios.php", { id_editar: id_editar }, function (data) {
-        var UsuarioEncontrado = JSON.parse(data);
-        $('#idmoficar').val(UsuarioEncontrado.id);
-        $('#nUsuario').val(UsuarioEncontrado.producto);
-       // $('#DNI').val(UsuarioEncontrado.precioU);
-       // $('#Estado').val(UsuarioEncontrado.stock);        
-    });
-}
-
-function modificausuario() {
-    var formData = new FormData();
-    var idmoficar = $('#idmoficar').val();
-    var UsuarioEdi = $('#nUsuario').val();
-   // var PrecioEdi = $('#pUnitario').val();
-  //  var StockEdi = $('#stock').val();    
-  //  var ImagenEdi = $('#imagen')[0].files[0];
-
-    formData.append('idmoficar',idmoficar);
-    formData.append('UsuarioEdi',UsuarioEdi);
-    //formData.append('PrecioEdi',PrecioEdi);
-    //formData.append('StockEdi',StockEdi);    
-    //formData.append('ImagenEdi',ImagenEdi);
+function guardarUsuario() {
+    var idGuardarUsuarioM = $('#idOcultoModificar').val();
     
-
-
-    $.ajax({
-        url: 'getUsuario.php',
-        type: 'post',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(data) {
-
-            if (data != "1") {
-                Swal.fire({
-                    title: data,
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
-            }
-            else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Modificado exitosamente',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                $('#idmoficar').val("");
-                $('#nUsuario').val("");
-              //  $('#pUnitario').val("");
-              //  $('#stock').val("");
-              //  $('#imagen').val("");
-                $('.btnOculto').hide();
-                $('.btnmostrar').show();
-                ExtraerUsuarios();
-            }
+    var nombreM = $('#nombre').val();
+    var dniModificar = $('#dni').val();
+    var rolM = $('#rol').val();
+    var userM = $('#user').val();
+    var contraM = $('#contra').val();
+    //var estadoM = $('#estado').val();
+    
+    $.post("../moduloGestion/getUsuarios.php", { idGuardarUsuarioM: idGuardarUsuarioM, nombreM: nombreM, dniModificar: dniModificar, rolM: rolM, userM: userM, contraM: contraM, estadoM: estadoM  }, function (data) {
+        if (data == "Hay valores NO Validos") {
+            Swal.fire({
+                title: data,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+        }
+        else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Modificado exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            $('#nombre').val("");
+            $('#dni').val("");
+            $('#user').val("");
+            $('#contra').val("");
+            $('#estado').val("");
+            ExtraerUsuarios();
         }
     });
 }
-function eliminarUsuario(idUsuario) {
+function ExtraerUsuarios() {
+    var ExtraerUsuarios = 1;
+    $.post("../moduloGestion/getUsuarios.php", { ExtraerUsuarios: ExtraerUsuarios }, function (data) {
+        var ListaProductos = JSON.parse(data);
+        var resultado = "";
+        for (var i = 0; i < ListaProductos.length; i++) {
+            resultado += "<tr><td>" + ListaProductos[i].idUsuario + "</td><td>" + ListaProductos[i].nombre + "</td><td>" + ListaProductos[i].dni + "</td><td>" + ListaProductos[i].rol + "</td><td>" + ListaProductos[i].login + "</td><td>" + ListaProductos[i].password + "</td><td>" + ListaProductos[i].estado + "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
+
+        }
+        document.getElementById("lista_usuarios").innerHTML = resultado;
+    });
+}
+function BuscarUsuarioLogin() {
+    var buscar = $('#buscar').val();
+    $.post("../moduloGestion/getUsuarios.php", { buscar: buscar }, function (data) {
+        var ListaProductos = JSON.parse(data);
+        var resultado = "";
+        for (var i = 0; i < ListaProductos.length; i++) {
+            resultado += "<tr><td>" + ListaProductos[i].idUsuario + "</td><td>" + ListaProductos[i].nombre + "</td><td>" + ListaProductos[i].dni + "</td><td>" + ListaProductos[i].rol + "</td><td>" + ListaProductos[i].login + "</td><td>" + ListaProductos[i].password  + "</td><td>" + ListaProductos[i].estado + "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
+
+        }
+        document.getElementById("lista_usuarios").innerHTML = resultado;
+
+    });
+}
+function editarUsuario(id) {
+    var idEditar = id;
+    $('#idOcultoModificar').val("");
+    $('#registrar').hide();
+    $('#editar').show();
+    $.post("../moduloGestion/getUsuarios.php", { idEditar: idEditar }, function (data) {
+        var UsuarioEncontrado = JSON.parse(data);
+        $('#idOcultoModificar').val(UsuarioEncontrado.idUsuario);
+        $('#nombre').val(UsuarioEncontrado.nombre);
+        $('#dni').val(UsuarioEncontrado.dni);
+        $('#user').val(UsuarioEncontrado.login);
+        $('#contra').val(UsuarioEncontrado.password);
+        
+        $('#estado').val(UsuarioEncontrado.estado);
+        
+        document.getElementById("rol").value = UsuarioEncontrado.rol;
+
+    });
+}
+function eliminarUsuario(id) {
+    var idEliminar = id;
     Swal.fire({
         title: '¿Estas seguro de Eliminar Usuario?',
         text: "¡Recuerda que esto ya no se podrá revertir!",
@@ -85,84 +99,50 @@ function eliminarUsuario(idUsuario) {
                 'El Usuario ha sido Eliminado.',
                 'success'
             )
-            $.post("../moduloGestion/getUsuarios.php", { idUsuario: idUsuario }, function (data) {
+            $.post("getUsuarios.php", { idEliminar: idEliminar }, function (data) {
                 ExtraerUsuarios();
             });
         }
     })
 
 }
-
-function Buscarusuario() {
-    var BUsuario = $('#BUsuario').val();
-    $.post("../moduloGestion/getUsuarios.php", { BUsuario: BUsuario }, function (data) {
-        var ListaUsuarios = JSON.parse(data);
-        var resultado = "";
-        for (var i = 0; i < ListaUsuarios.length; i++) {
-            resultado+="<tr><td>"+ListaUsuarios[i].usuario+"</td><td>"+ListaProductos[i].vhj+"</td><td>"+ListaProductos[i].jh+"<td><button class='btn btn-warning' onclick='editarProducto("+ListaProductos[i].id+")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarProducto("+ListaProductos[i].id+")'><i class='far fa-trash-alt'></i></button></td></tr>";
+function registrarUsuario() {
+    var nombre = $('#nombre').val();
+    var dniRegistro = $('#dni').val();
+    var rol = $('#rol').val();
+    var user = $('#user').val();
+    var contra = $('#contra').val();
+    
+    var estado = $('#estado').val();
+    
+    
+    $.post("../moduloGestion/getUsuarios.php", { nombre: nombre, dniRegistro: dniRegistro, rol: rol, user: user, contra: contra, estado: estado }, function (data) {
+        if (data == "Hay valores NO Validos") {
+            Swal.fire({
+                title: data,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
         }
-        document.getElementById("lista_usuarios").innerHTML = resultado;
-    });
-}
-function guardausuario() {
-
-    var formData = new FormData();
-    var NUsuario = $('#nUsuario').val();
-    //var PrecioU = $('#pUnitario').val();
-    //var StockP = $('#stock').val();    
-    //var ImagenP = $('#imagen')[0].files[0];
-
-    formData.append('NUsuario',NProducto);
-    //formData.append('PrecioU',PrecioU);
-    //formData.append('StockP',StockP);    
-    //formData.append('ImagenP',ImagenP);
-
-    $.ajax({
-        url: 'getUsuarios.php',
-        type: 'post',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(data) {
-
-            if (data != "1") {
-                Swal.fire({
-                    title: data,
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
-            }
-            else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Añadido exitosamente',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                $('#nUsuarios').val("");
-                //$('#pUnitario').val("");
-                //$('#stock').val("");
-                //$('#imagen').val("");
-                ExtraerUsuarios();
-            }
-        }
-    });
-}
-function ExtraerUsuarios() {
-    var extraerUsuarios = 1;
-    $.post("../moduloGestion/getUsuarios.php", { extraerUsuarios: extraerUsuarios }, function (data) {
-        var ListaUsuarios = JSON.parse(data);
-        var resultado = "";        
-        for (var i = 0; i < ListaUsuarios.length; i++) {
+        else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro realizado con exito',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            $('#nombre').val("");
+            $('#dni').val("");
+            $('#user').val("");
+            $('#contra').val("");
             
-            //
-            resultado+="<tr><td>"+ListaUsuarios[i].usuario+"</td><td>"+ListaUsuarios[i].estado+"</td><td>"+ListaUsuarios[i].dni+"<td><button class='btn btn-warning' onclick='editarUsuario("+ListaUsuarios[i].id+")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario("+ListaUsuarios[i].id+")'><i class='far fa-trash-alt'></i></button></td></tr>";
-            //
+            $('#estado').val("");
+            
+            ExtraerUsuarios();
         }
-        document.getElementById("lista_productos").innerHTML = resultado;
     });
 }
