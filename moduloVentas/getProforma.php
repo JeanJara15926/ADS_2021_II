@@ -1,6 +1,6 @@
 <?php
     function validarCampos($detalleProforma,$num_filas){
-       // $devolver;
+       
         for($i=0;$i<$num_filas;$i++){
             if( $detalleProforma[$i]['cantidad'] > 0 && $detalleProforma[$i]['bolsa'] >= 0 && $detalleProforma[$i]['monto'] > 0 ){
                 $devolver = 1;
