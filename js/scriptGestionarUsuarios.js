@@ -153,16 +153,17 @@ function guardausuario() {
     });
 }
 function ExtraerUsuarios() {
-    var extraerUsuarios = 1;
-    $.post("../moduloGestion/getUsuarios.php", { extraerUsuarios: extraerUsuarios }, function (data) {
+    console.log("extrae datos")
+    var ExtraerUsuarios = 1;
+    $.post("../moduloGestion/getUsuarios.php", { ExtraerUsuarios: ExtraerUsuarios }, function (data) {
         var ListaUsuarios = JSON.parse(data);
+        console.log("lista usuaios",ListaUsuarios);
         var resultado = "";        
         for (var i = 0; i < ListaUsuarios.length; i++) {
             
-            //
-            resultado+="<tr><td>"+ListaUsuarios[i].usuario+"</td><td>"+ListaUsuarios[i].estado+"</td><td>"+ListaUsuarios[i].dni+"<td><button class='btn btn-warning' onclick='editarUsuario("+ListaUsuarios[i].id+")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario("+ListaUsuarios[i].id+")'><i class='far fa-trash-alt'></i></button></td></tr>";
-            //
+            resultado += "<tr><td>" + ListaUsuarios[i].idUsuario + "</td><td>" + ListaUsuarios[i].nombre + "</td><td>" + ListaUsuarios[i].dni + "</td><td>" + ListaUsuarios[i].rol + "</td><td>" + ListaUsuarios[i].login + "</td><td>" + ListaUsuarios[i].estado + "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaUsuarios[i].idUsuario + ")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaUsuarios[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
+
         }
-        document.getElementById("lista_productos").innerHTML = resultado;
+        document.getElementById("lista_usuarios").innerHTML = resultado;
     });
 }

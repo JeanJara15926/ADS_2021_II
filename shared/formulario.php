@@ -36,8 +36,7 @@
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title> <?php echo ucwords(strtolower($titulo)); ?></title> 
                 </head>
-                <body style="font-family: 'Didact Gothic', sans-serif;" class="fondo">      
-                   
+                <body style="font-family: 'Didact Gothic', sans-serif;" class="fondo">       
                 <div class="barra">
                     <p class="text-white" class="usuario">Usuario activo:<?php echo $_SESSION['login'] ?> </p>
                 </div>     

@@ -4,8 +4,6 @@
         public function formGestionarUsuariosShow(){
                 $this -> encabezadoShowSimple("Gestionar Usuario");
                 ?>
-
-
             <div class="container usuario">
                 <div class="row">                    
                     <div class="col-10">
@@ -57,17 +55,6 @@
                             </div>
                         </div>
 
-
-                        
-
-
-
-
-
-
-
-
-
                         <div class="mb-3 row">
                             <label for="text_Login" class="col-sm-2 col-form-label">LOGIN</label>
                             <div class="col-sm-10">
@@ -89,10 +76,6 @@
                             </div>
                         </div>
 
-
-
-                    
-
                         <div class="mb-3 row">
                             <div class="col-5"></div>
                             <div class="col">                                
@@ -107,17 +90,11 @@
             </div>
             <div class="container">
                 <div class="">
-                    
-                
-
-
-
 
                     <h1 class="text-center">LISTA DE USUARIOS</h1>
 
                     <div class="mb-3 row">
                     
-                        
                         <div class="col-sm-10">
                             <form action="" method="post">
                             <input type="text" class="form-control" onkeyup="BuscarUsuarioLogin()" id="BUsuario" placeholder="Ingrese el nombre del usuario">
@@ -149,7 +126,7 @@
                 </div>
             </div>
 
-            <script src="../js/scriptGestionarUsuario.js"></script>
+            <script src="../js/scriptGestionarUsuarios.js"></script>
             <?php          
                 $this->piePaginaShow();
         }

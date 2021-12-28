@@ -4,6 +4,7 @@
         public function formMensajeSistemaShow($mensaje, $enlace){
             $this -> encabezadoShow("Mensaje del Sistema");
             ?>
+            <br><br><br>
             <table class="ADSLogin">
                 <tr>  
                     <td class="tdMensaje">MENSAJE SISTEMA</td>
@@ -18,6 +19,7 @@
                     <td class="tdMensajeSecu"><?php echo $enlace; ?> </td>
                 </tr>
             </table>
+            <br><br><br><br><br><br><br>
             <?php          
             $this->piePaginaShow();
         }

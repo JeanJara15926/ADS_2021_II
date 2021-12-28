@@ -9,7 +9,7 @@
     if(isset($_POST['ExtraerUsuarios'])){
         include_once("controllerGestionarUsuario.php");
         $objController = new controllerGestionarUsuario;
-        $objController->ExtraerUsuarios();
+        $objController -> ExtraerUsuarios();
     }
     else if(isset($_POST['dniRegistro'])){
         $user = trim($_POST['user']);

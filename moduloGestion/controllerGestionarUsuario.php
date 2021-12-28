@@ -11,7 +11,7 @@ class controllerGestionarUsuario{
                 $arr[$i] = array(
                     'idUsuario' => $ListaUsuario[$i]['idUsuario'],
                     'nombre' => $ListaUsuario[$i]['nombre'],
-                    'dni' => $ListaUsuario[$i]['dni'],
+                    'dni' => $ListaUsuario[$i]['DNI'],
                     'rol' => $ListaUsuario[$i]['rol'],
                     'login' => $ListaUsuario[$i]['login'],
                     'password' => $ListaUsuario[$i]['password'],
