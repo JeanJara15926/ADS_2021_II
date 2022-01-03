@@ -5,11 +5,11 @@
      $_SESSION['login'];
      include_once("formGestionarUsuario.php");
 
-     $objUsuario = new formGestionarUsuario;
-     $objUsuario -> formGestionarUsuarioShow();
+     //$objUsuario = new formGestionarUsuario;
+     //$objUsuario -> formGestionarUsuarioShow();
 
-     //$objEmitirU = new formGestionarUsuario;
-     //$objEmitirU -> formGestionarUsuarioShow();
+     $objEmitirU = new formGestionarUsuario;
+     $objEmitirU -> formGestionarUsuarioShow();
 }
 else{
      include_once("../shared/formMensajeSistema.php");

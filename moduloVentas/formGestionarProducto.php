@@ -57,10 +57,9 @@
                             </div>
                         </div>
                     </div>
-
-                </form>
-                
+                </form>    
             </div>
+
             <div class="container">
                 <div class="">
                     <h1 class="text-center">LISTA DE PRODUCTOS</h1>
