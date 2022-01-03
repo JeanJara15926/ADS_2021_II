@@ -1,7 +1,7 @@
 <?php
     include_once("../shared/formulario.php");
-    class formGestionarUsuarios extends formulario{
-        public function formGestionarUsuariosShow(){
+    class formGestionarUsuario extends formulario{
+        public function formGestionarUsuarioShow(){
                 $this -> encabezadoShowSimple("Gestionar Usuario");
                 ?>
             <div class="container usuario">
@@ -10,7 +10,7 @@
                         <p><i class='fas fa-user-alt'></i><?php echo $_SESSION['login'] ?>
                     </div>
                     <div class="col">
-                        <form name="form3" method="post" action="../moduloSeguridad/getUsuarios.php">                                                       
+                        <form name="form3" method="post" action="../moduloSeguridad/getGestion.php">                                                       
                                 <button  style="color: white" name="retrocede" type="submit" class="btn btn-info" id="retrocede">
                                     VOLVER<i class="fa fa-arrow-circle-left"  style="margin-left:10px"></i>
                                 </button>
@@ -69,12 +69,6 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="text_Estado" class="col-sm-2 col-form-label">ESTADO</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_Estado">
-                            </div>
-                        </div>
 
                         <div class="mb-3 row">
                             <div class="col-5"></div>
@@ -90,6 +84,9 @@
                 </form>
                 
             </div>
+
+
+
 
         <div class="container">
                 <div class="">
@@ -111,13 +108,14 @@
                         <table class="table table-hover table-resposive text-center">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>LISTA USUARIO</th>
+                                    <th>ID USUARIO</th>
+                    
                                         <th>NOMBRE</th>
                                         <th>DNI</th>
                                         <th>ROL</th>
                                         <th>LOGIN</th>
                                         <th>PASSWORD</th>
-                                        <th>ESTADO</th>
+                                        
                                         <th>EDITAR</th>
                                         <th>ELIMINAR</th>
                                     </tr>
@@ -129,7 +127,7 @@
                 </div>
             </div>
 
-            <script src="../js/scriptGestionarUsuarios.js"></script>
+            <script src="../js/scriptGestionarUsuario.js"></script>
             <?php          
                 $this->piePaginaShow();
         }
