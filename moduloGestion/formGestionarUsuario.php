@@ -92,16 +92,17 @@
 
                     <h1 class="text-center">LISTA DE USUARIOS</h1>
 
-                    <div class="mb-3 row">
-                    
-                        <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-lg-6 ml-auto">
                             <form action="" method="post">
-                            <input type="text" class="form-control" onkeyup="BuscarUsuarioLogin()" id="BUsuario" placeholder="Ingrese el nombre del usuario">
-                            <button class="btn btn-success" onclick="Buscarusuario()">Buscar</button>
+                                <div class="form-group">
+                                    <label for="buscra">BUSCAR POR LOGIN:</label>
+                                    <input type="hidden" id="idOcultoModificar">
+                                    <input type="text" onkeyup="BuscarUsuarioLogin()" name="buscar" id="buscar" placeholder="Ingrese su LOGIN" class="form-control">
+                                    <button class="btn btn-success" onclick="Buscarusuario()">Buscar</button>
+                                </div>
                             </form>
                         </div>
-                        
-                        
                     </div>
                     <div>
                         <table class="table table-hover table-resposive text-center">

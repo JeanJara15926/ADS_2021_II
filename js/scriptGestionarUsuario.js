@@ -7,7 +7,12 @@ function guardarUsuario() {
     var rolM = $('#rol').val();
     var userM = $('#user').val();
     var contraM = $('#contra').val();
-    
+    console.log(idGuardarUsuarioM);
+    console.log(nombreM);
+    console.log(dniModificar);
+    console.log(rolM);
+    console.log(userM);
+    console.log(contraM);
     //var pesM = $('#pes').val();
     //var resM = $('#res').val();
     
@@ -46,7 +51,7 @@ function ExtraerUsuarios() {
     $.post("../moduloGestion/getGestion.php", { ExtraerUsuarios: ExtraerUsuarios }, function (data) {
         var ListaUsuarios = JSON.parse(data);
         var resultado = "";
-        for (var i = 0; i < ListaProductos.length; i++) {
+        for (var i = 0; i < ListaUsuarios.length; i++) {
             resultado +=
             "<tr><td>" + ListaUsuarios[i].idUsuario +
             "</td><td>" + ListaUsuarios[i].nombre +
@@ -92,6 +97,7 @@ function editarUsuario(id) {
     $('#editar').show();
     $.post("../moduloGestion/getGestion.php", { idEditar: idEditar }, function (data) {
         var UsuarioEncontrado = JSON.parse(data);
+        console.log(UsuarioEncontrado.idUsuario);
         $('#idOcultoModificar').val(UsuarioEncontrado.idUsuario);
         $('#nombre').val(UsuarioEncontrado.nombre);
         $('#dni').val(UsuarioEncontrado.dni);

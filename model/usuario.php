@@ -88,7 +88,7 @@
 
         public function UpdateUsuarios($idGuardarUsuarioM,$nombre,$dni,$rol,$user,$contra){
             $conn=$this->conectar();
-            $SQL ="UPDATE usuarios SET nombre='$nombre',dni=$dni,rol='$rol',login='$user',password='$contra' WHERE idUsuario=$idGuardarUsuarioM";
+            $SQL ="UPDATE usuarios SET nombre='$nombre',DNI=$dni,rol='$rol',login='$user',password='$contra' WHERE idUsuario=$idGuardarUsuarioM";
             $result = mysqli_query($conn,$SQL);
             $this->desconectar($conn);
         }
