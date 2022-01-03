@@ -28,25 +28,25 @@
                         <h1 class="text-center">REGISTRO USUARIO</h1>
 
                         <div class="mb-3 row">
-                            <label for="text_Nombre" class="col-sm-2 col-form-label">NOMBRE</label>
+                            <label for="nombre" class="col-sm-2 col-form-label">NOMBRE</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_Nombre">
+                                <input type="text" class="form-control" id="nombre">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="text_DNI" class="col-sm-2 col-form-label">DNI</label>
+                            <label for="dni" class="col-sm-2 col-form-label">DNI</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_DNI">
+                                <input type="text" class="form-control" id="dni">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="text_Rol" class="col-sm-2 col-form-label">ROL</label>
+                            <label for="rol" class="col-sm-2 col-form-label">ROL</label>
                             <div class="col-sm-10">
                                 
 
-                                <select class="form-select form-select-sm" id="text_Rol" aria-label=".form-select-sm example">
+                                <select class="form-select form-select-sm" id="rol" aria-label=".form-select-sm example">
                                             <option value="Administrador">ADMINISTRADOR</option>
                                             <option value="Cajero">CAJERO</option>
                                             <option value="Vendedor">VENDEDOR</option>
@@ -56,26 +56,25 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="text_Login" class="col-sm-2 col-form-label">LOGIN</label>
+                            <label for="user" class="col-sm-2 col-form-label">LOGIN</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_Login">
+                                <input type="text" class="form-control" id="user">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="text_Password" class="col-sm-2 col-form-label">PASSWORD</label>
+                            <label for="contra" class="col-sm-2 col-form-label">PASSWORD</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text_Password">
+                                <input type="text" class="form-control" id="contra">
                             </div>
                         </div>
 
 
                         <div class="mb-3 row">
                             <div class="col-5"></div>
-                            <div class="col">                                
-                                <input type="button" class="btn btn-primary btnmostrar" value="Guardar" onclick="guardaproducto()"/>
-                                <input type="button" class="btn btn-primary btnOculto" onclick="modificaproducto()" value="Modificar" />
-                                <input type="hidden" id="idmoficar">
+                            <div class="form-group">
+                                        <input type="button" value="Crear Usuario" id="registrar" onclick="registrarUsuario()" class="btn btn-primary btnRegistrarUsuarios">
+                                        <input type="button" value="Modificar" id="editar" onclick="guardarUsuario()" class="btn btn-primary btnModificarUsuarios">
                             </div>
                         </div>
 
