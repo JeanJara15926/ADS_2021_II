@@ -56,7 +56,7 @@
 
         public function EliminarUsuario($idEliminar){
             $conn=$this->conectar();
-            $SQL ="DELETE FROM USUARIOS WHERE idUsuario=$idEliminar";
+            $SQL ="DELETE FROM usuarios WHERE idUsuario=$idEliminar";
             $result = mysqli_query($conn,$SQL);
             $this->desconectar($conn);
         }
@@ -76,7 +76,7 @@
 
         public function BuscarUsuarioEdit($idEditar){
             $conn=$this->conectar();
-            $SQLP ="SELECT * FROM USUARIOS WHERE idUsuario = $idEditar";
+            $SQLP ="SELECT * FROM usuarios WHERE idUsuario = $idEditar";
             $resulti = mysqli_query($conn,$SQLP);
             $this->desconectar($conn);
             $numero_filas = mysqli_num_rows($resulti); 

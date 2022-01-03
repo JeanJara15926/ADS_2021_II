@@ -44,18 +44,19 @@ function guardarUsuario() {
 function ExtraerUsuarios() {
     var ExtraerUsuarios = 1;
     $.post("../moduloGestion/getGestion.php", { ExtraerUsuarios: ExtraerUsuarios }, function (data) {
-        var ListaProductos = JSON.parse(data);
+        var ListaUsuarios = JSON.parse(data);
         var resultado = "";
         for (var i = 0; i < ListaProductos.length; i++) {
             resultado +=
-            "<tr><td>" + ListaProductos[i].idUsuario +
-            "</td><td>" + ListaProductos[i].nombre +
-            "</td><td>" + ListaProductos[i].dni +
-            "</td><td>" + ListaProductos[i].rol +
-            "</td><td>" + ListaProductos[i].login +
-            "</td><td>" + ListaProductos[i].password +
+            "<tr><td>" + ListaUsuarios[i].idUsuario +
+            "</td><td>" + ListaUsuarios[i].nombre +
+            "</td><td>" + ListaUsuarios[i].dni +
+            "</td><td>" + ListaUsuarios[i].rol +
+            "</td><td>" + ListaUsuarios[i].login +
+            "</td><td>" + ListaUsuarios[i].password +
             
-            "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
+            "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaUsuarios[i].idUsuario + ")'><i class='far fa-edit'></i></button>"+
+            "</td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaUsuarios[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
 
         }
         document.getElementById("lista_usuarios").innerHTML = resultado;
@@ -66,18 +67,18 @@ function ExtraerUsuarios() {
 function BuscarUsuarioLogin() {
     var buscar = $('#buscar').val();
     $.post("../moduloGestion/getGestion.php", { buscar: buscar }, function (data) {
-        var ListaProductos = JSON.parse(data);
+        var ListaUsuarios = JSON.parse(data);
         var resultado = "";
-        for (var i = 0; i < ListaProductos.length; i++) {
+        for (var i = 0; i < ListaUsuarios.length; i++) {
             resultado +=
-            "<tr><td>" + ListaProductos[i].idUsuario +
-            "</td><td>" + ListaProductos[i].nombre +
-            "</td><td>" + ListaProductos[i].dni +
+            "<tr><td>" + ListaUsuarios[i].idUsuario +
+            "</td><td>" + ListaUsuarios[i].nombre +
+            "</td><td>" + ListaUsuarios[i].dni +
             
-            "</td><td>" + ListaProductos[i].login +
-            "</td><td>" + ListaProductos[i].password +
+            "</td><td>" + ListaUsuarios[i].login +
+            "</td><td>" + ListaUsuarios[i].password +
             
-            "</td><td>" + "</td><td>" + ListaProductos[i].rol + "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaProductos[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
+            "</td><td>" + "</td><td>" + ListaUsuarios[i].rol + "</td><td><button class='btn btn-warning' onclick='editarUsuario(" + ListaUsuarios[i].idUsuario + ")'><i class='far fa-edit'></i></button></td><td><button class='btn btn-danger' onclick='eliminarUsuario(" + ListaUsuarios[i].idUsuario + ")'><i class='far fa-trash-alt'></i></button></td></tr>";
 
         }
         document.getElementById("lista_usuarios").innerHTML = resultado;
@@ -120,7 +121,7 @@ function eliminarUsuario(id) {
                 'El Usuario ha sido Eliminado.',
                 'success'
             )
-            $.post("getUsuarios.php", { idEliminar: idEliminar }, function (data) {
+            $.post("getGestion.php", { idEliminar: idEliminar }, function (data) {
                 ExtraerUsuarios();
             });
         }
