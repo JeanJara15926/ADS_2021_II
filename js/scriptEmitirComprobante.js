@@ -6,7 +6,7 @@ ObtenerCodigoNuevo();
 
 function ExtraerProformas() {
     var ExtraerProformas = 1;
-    $.post("../moduloVentas/getEmitirBoleta.php", { ExtraerProformas: ExtraerProformas }, function (data) {
+    $.post("../moduloVentas/getEmitirComprobante.php", { ExtraerProformas: ExtraerProformas }, function (data) {
         var Respuesta = JSON.parse(data);
         document.getElementById("lista_proformas").innerHTML = Respuesta.resultado;
         ListaProformas = Respuesta.ListaProformas;
@@ -15,7 +15,7 @@ function ExtraerProformas() {
 
 function BuscarProformaCodigo() {
     var codigoProforma = document.getElementById("txtCodigo").value;
-    $.post("../moduloVentas/getEmitirBoleta.php", { codigoProforma: codigoProforma }, function (data) {
+    $.post("../moduloVentas/getEmitirComprobante.php", { codigoProforma: codigoProforma }, function (data) {
         var Respuesta = JSON.parse(data);
         document.getElementById("lista_proformas").innerHTML = Respuesta.resultado;
         ListaProformas = Respuesta.ListaProformas;
@@ -24,7 +24,7 @@ function BuscarProformaCodigo() {
 
 function ObtenerCodigoNuevo() {
     var ObtenerCodigoNuevo = 1;
-    $.post("../moduloVentas/getEmitirBoleta.php", { ObtenerCodigoNuevo: ObtenerCodigoNuevo }, function (data) {
+    $.post("../moduloVentas/getEmitirComprobante.php", { ObtenerCodigoNuevo: ObtenerCodigoNuevo }, function (data) {
         var CodigoNuevo = data;
         document.getElementById("codigo").value = CodigoNuevo;
     });
@@ -32,7 +32,7 @@ function ObtenerCodigoNuevo() {
 
 function BuscarProformaFecha() {
     var fecha = document.getElementById("fecha_buscar").value;
-    $.post("../moduloVentas/getEmitirBoleta.php", { fecha: fecha }, function (data) {
+    $.post("../moduloVentas/getEmitirComprobante.php", { fecha: fecha }, function (data) {
         var Respuesta = JSON.parse(data);
         document.getElementById("lista_proformas").innerHTML = Respuesta.resultado;
         ListaProformas = Respuesta.ListaProformas;
@@ -42,7 +42,7 @@ function BuscarProformaFecha() {
 function SeleccionarProforma(fila) {
     var _Proforma = ListaProformas[fila];
     console.log( _Proforma);
-    $.post("../moduloVentas/getEmitirBoleta.php", { Proforma: _Proforma }, function (data) {
+    $.post("../moduloVentas/getEmitirComprobante.php", { Proforma: _Proforma }, function (data) {
         
         if (data == "0") {
             Swal.fire({
@@ -64,29 +64,29 @@ function SeleccionarProforma(fila) {
             document.getElementById("detalle_proforma").innerHTML = Respuesta.resultado;
             document.getElementById("codigo_proforma").innerHTML = "Codigo: " + Proforma.codigo;
             document.getElementById("monto_total_proforma").innerHTML = "Monto total: S/. " + Proforma.monto_total;
-            $("#emitirBoleta").removeAttr("disabled");
+            $("#emitirComprobante").removeAttr("disabled");
         }
     });
 }
 
-function EmitirBoleta() {
+function EmitirComprobante() {
 
     var _codigo = document.getElementById("codigo").value;
     var _fecha = document.getElementById("fecha").value;
     var _monto_total = Proforma.monto_total;
-    var _nom_cliente = document.getElementById("nom_cliente").value;
-    var _documento = document.getElementById("documento").value;
-    var _tipo = document.getElementById("tipo_boleta").value;
+    //var _nom_cliente = document.getElementById("nom_cliente").value;
+    //var _documento = document.getElementById("documento").value;
+    //var _tipo = document.getElementById("tipo_comprobante").value;
 
-    var _Boleta = {
+    var _Comprobante = {
         codigo: _codigo,
         fecha: _fecha,
         monto_total: _monto_total,
-        nom_cliente: _nom_cliente,
-        documento: _documento,
-        tipo: _tipo
+        //nom_cliente: _nom_cliente,
+        //documento: _documento,
+        //tipo: _tipo
     };
-    var _DetalleBoleta = new Array();
+    var _DetalleComprobante = new Array();
 
     for (var i = 0; i < DetalleProforma.length; i++) {
 
@@ -96,7 +96,7 @@ function EmitirBoleta() {
         var bolsa = DetalleProforma[i].bolsa;
         var precioU = (monto - bolsa) / cantidad;
 
-        _DetalleBoleta[i] = {
+        _DetalleComprobante[i] = {
             id_producto: id_producto,
             cantidad: cantidad,
             monto: monto,
@@ -105,7 +105,7 @@ function EmitirBoleta() {
         };
     }
 
-    $.post("../moduloVentas/getEmitirBoleta.php", { Boleta: _Boleta, DetalleBoleta: _DetalleBoleta }, function (data) {
+    $.post("../moduloVentas/getEmitirComprobante.php", { Comprobante: _Comprobante, DetalleComprobante: _DetalleComprobante }, function (data) {
         var respuesta = data;
         if (respuesta === "1") {
             print();

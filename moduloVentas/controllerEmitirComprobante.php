@@ -1,6 +1,6 @@
 <?php
 
-class controllerEmitirBoleta{
+class controllerEmitirComprobante{
     public function ExtraerProformas(){
         include_once("../model/proforma.php");
         $objProforma = new proforma;
@@ -30,9 +30,9 @@ class controllerEmitirBoleta{
     }
 
     public function obtenerCodigoNuevo(){
-        include_once("../model/boleta.php");
-        $objBoleta = new boleta;
-        $codigoNuevo= $objBoleta->obtenerCodigoNuevo();
+        include_once("../model/comprobante.php");
+        $objComprobante = new comprobante;
+        $codigoNuevo= $objComprobante->obtenerCodigoNuevo();
 
         echo $codigoNuevo;
     }
@@ -126,27 +126,27 @@ class controllerEmitirBoleta{
         echo json_encode($arr);
     }
 
-    public function InsertarBoleta($Boleta,$DetalleBoleta){
-        include_once("../model/boleta.php");
-        $objBoleta = new Boleta;
-        $res=$objBoleta->InsertarBoleta($Boleta);
+    public function InsertarComprobante($Comprobante,$DetalleComprobante){
+        include_once("../model/comprobante.php");
+        $objComprobante = new Comprobante;
+        $res=$objComprobante->InsertarComprobante($Comprobante);
         if($res="1"){
-            $codigo=$Boleta['codigo'];
-            $idBoleta=$objBoleta->obtenerIDBoleta($codigo);
-            include_once("../model/detalleBoleta.php");
-            $objDetalleBoleta = new detalleComprobante;
-            $res=$objDetalleBoleta->InsertarDetalleBoleta($DetalleBoleta,$idBoleta);
+            $codigo=$Comprobante['codigo'];
+            $idComprobante=$objComprobante->obtenerIDComprobante($codigo);
+            include_once("../model/detalleComprobante.php");
+            $objDetalleComprobante = new detalleComprobante;
+            $res=$objDetalleComprobante->InsertarDetalleComprobante($DetalleComprobante,$idComprobante);
             if($res="1"){
                 include_once("../model/producto.php");
                 $objProducto = new producto;
-                $res=$objProducto->ActualizarStock($DetalleBoleta);
+                $res=$objProducto->ActualizarStock($DetalleComprobante);
             }
             else{
-                $res = "Error al insertar Boleta";
+                $res = "Error al insertar comprobante";
             }
             
         }else{
-            $res = "Error al insertar Boleta";
+            $res = "Error al insertar comprobante";
         }
         return $res;
     }

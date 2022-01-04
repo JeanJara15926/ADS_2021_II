@@ -1,11 +1,11 @@
 <?php
-
+ //$boton = $_POST['bntOk'];
  if(isset($_POST['bntOk'])){
      session_start();
      $_SESSION['login'];
-     include_once("formEmitirBoleta.php");
-     $objEmitirP = new formEmitirBoleta;
-     $objEmitirP -> formEmitirBoletaShow();
+     include_once("formEmitirComprobante.php");
+     $objEmitirP = new formEmitirComprobante;
+     $objEmitirP -> formEmitirComprobanteShow();
  }
  else{
      include_once("../shared/formMensajeSistema.php");

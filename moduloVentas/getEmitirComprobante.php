@@ -3,28 +3,28 @@
 
 if(isset($_POST['ExtraerProformas'])){
 
-    include_once("controllerEmitirBoleta.php");
-    $objController = new controllerEmitirBoleta;
+    include_once("controllerEmitirComprobante.php");
+    $objController = new controllerEmitirComprobante;
     $objController->ExtraerProformas();
 
 }
 else if(isset($_POST['codigoProforma'])){
     $codigoProforma=trim($_POST['codigoProforma']);
-    include_once("controllerEmitirBoleta.php");
-    $objController = new controllerEmitirBoleta;
+    include_once("controllerEmitirComprobante.php");
+    $objController = new controllerEmitirComprobante;
     $objController->BuscarProformaCodigo($codigoProforma);
 
 }
 else if(isset($_POST['ObtenerCodigoNuevo'])){
-    include_once("controllerEmitirBoleta.php");
-    $objController = new controllerEmitirBoleta;
+    include_once("controllerEmitirComprobante.php");
+    $objController = new controllerEmitirComprobante;
     $objController->obtenerCodigoNuevo();
 
 }
 else if(isset($_POST['fecha'])){
     $fecha=$_POST['fecha'];
-    include_once("controllerEmitirBoleta.php");
-    $objController = new controllerEmitirBoleta;
+    include_once("controllerEmitirComprobante.php");
+    $objController = new controllerEmitirComprobante;
     $objController->BuscarProformaFecha($fecha);
 
 }
@@ -33,11 +33,11 @@ else if(isset($_POST['Proforma'])){
     $fechaProforma=$Proforma['fecha'];
     $fechaActual=date('Y-m-d');
     $fechaValidar=date("Y-m-d",strtotime($fechaProforma."+ 6 days"));// para la validez de 7 dias
-    
+
     if(strtotime($fechaValidar)>=strtotime($fechaActual))
     {
-        include_once("controllerEmitirBoleta.php");
-        $objController = new controllerEmitirBoleta;
+        include_once("controllerEmitirComprobante.php");
+        $objController = new controllerEmitirComprobante;
         
         $objController->ExtraerDetalleProforma($Proforma);
     }else{
@@ -45,27 +45,27 @@ else if(isset($_POST['Proforma'])){
     }
 
 }
-else if(isset($_POST['Boleta'])){
-    $Boleta = $_POST['Boleta'];
-    $DetalleBoleta = $_POST['DetalleBoleta'];
+else if(isset($_POST['Comprobante'])){
+    $Comprobante = $_POST['Comprobante'];
+    $DetalleComprobante = $_POST['DetalleComprobante'];
     $res="";
-    if($Boleta['tipo']=="F")
+    /*if($Comprobante['tipo']=="F")
     {
-        $documento=trim($Boleta['documento']);
-        $nom_documento=trim($Boleta['nom_cliente']);
+        $documento=trim($Comprobante['documento']);
+        $nom_documento=trim($Comprobante['nom_cliente']);
 
         if(strlen($documento)>0 && strlen($nom_documento)>0){
-            include_once("controllerEmitirBoleta.php");
-            $objController = new controllerEmitirBoleta;
-            $res=$objController->InsertarBoleta($Boleta,$DetalleBoleta);
+            include_once("controllerEmitirComprobante.php");
+            $objController = new controllerEmitirComprobante;
+            $res=$objController->InsertarComprobante($Comprobante,$DetalleComprobante);
         }else{
             $res= "Debe ingresar el RUC y Razón social";
         }
-    }else{
-        include_once("controllerEmitirBoleta.php");
-        $objController = new controllerEmitirBoleta;
-        $res=$objController->InsertarBoleta($Boleta,$DetalleBoleta);
-    }
+    }else{*/
+        include_once("controllerEmitirComprobante.php");
+        $objController = new controllerEmitirComprobante;
+        $res=$objController->InsertarComprobante($Comprobante,$DetalleComprobante);
+    //}
     echo $res;
 
 }
